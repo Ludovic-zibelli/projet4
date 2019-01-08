@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+    
+{% block body %}
+    </br>
+<div class="container">
+    <h1>{{ 'titleWelcomeLouvre'|trans }}</h1>
+    <hr>    
+
+    <p>{{ "descriptionMuseum1"|trans }}</p>
+
+    <p>{{ "descriptionMuseum2"|trans }}</p>
+
+    <div class="text-center">
+        <form action="booking">
+            <input type="submit" value={{ "wordTicketing"|trans }} />
+        </form>
+    </div>
+</div>
+
+{% endblock %}

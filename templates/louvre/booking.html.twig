@@ -1,0 +1,114 @@
+ {% extends 'base.html.twig' %}
+
+ {% form_theme formBooking 'bootstrap_4_layout.html.twig' %}
+    
+{% block body %}   
+
+    <div class="container">
+        <hr>
+        <h1>{{"booking"|trans}}</h1>
+        <hr>
+
+        {{ form_start(formBooking) }}
+            {{ form_row(formBooking.email) }}
+            {{ form_row(formBooking.visitdate) }}
+        
+            <hr>
+            <h3>{{"buy"|trans}}</h3>
+            <hr>
+            <div class="jumbotron">
+                <ul class="tickets" data-prototype="{{ form_widget(formBooking.tickets.vars.prototype)|e('html_attr') }}">
+                    {{ form_row(formBooking.tickets)}}
+                </ul>
+            </div>
+            {{ form_row(formBooking.bookingnumber) }}
+            {{ form_row(formBooking.totalprice) }}    
+
+        <button type="submit" class="btn btn-success">{{"endBooking"|trans}}</button>
+
+        {{ form_end(formBooking)}}
+            
+        <div id="container"></div>
+        {# cette div permet de faire apparaitre le calendrier des datepickers. je ne suis pas 
+        sure qu'elle soit tres bien placée #}
+
+    </div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="{{ asset ('pickadate/picker.js')}}"></script>
+        <script src="{{ asset ('pickadate/picker.date.js')}}"></script>
+        <script src="{{ asset ('pickadate/legacy.js')}}"></script>
+        <script type="text/javascript">
+
+    var $input = $( '.js-pickadate-booking' ).pickadate({
+            formatSubmit: 'yyyy-mm-dd',
+            hiddenName: true,
+            container: '#container',
+            selectMonths: true,
+            selectYears: 2,
+            firstDay: 1,
+            min: +1,
+            disable: [2, 7, [2019,4,1], [2019,11,25], [2020,4,1], [2020,11,25] ], 
+            monthsFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+            weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+            today: 'aujourd\'hui',
+            clear: 'effacer',
+
+        })
+
+    var $input1 = $( '.js-pickadate-ticket' ).pickadate({
+            formatSubmit: 'yyyy-mm-dd',
+            hiddenName: true,
+            container: '#container',
+            labelMonthNext: 'Go to the next month',
+            labelMonthPrev: 'Go to the previous month',
+            labelMonthSelect: 'Pick a month from the dropdown',
+            labelYearSelect: 'Pick a year from the dropdown',
+            selectMonths: true,
+            selectYears: 120,
+            firstDay: 1,
+            max: true,
+            monthsFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+            weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+            today: 'aujourd\'hui',
+            clear: 'effacer',
+        })
+        
+    var $collectionHolder;
+    var $addTicketButton = $('<button type="button" class="add_ticket_link">Ajouter un ticket</button>');
+    
+    jQuery(document).ready(function() {
+        $collectionHolder = $('ul.tickets');
+        $collectionHolder.append($addTicketButton);
+        $collectionHolder.data('index', $collectionHolder.find(':input').length);
+        $addTicketButton.on('click', function(e)
+        {
+            addTicketForm($collectionHolder, $addTicketButton);
+        });
+    });
+    function addTicketForm($collectionHolder, $addTicketButton) {
+        var prototype = $collectionHolder.data('prototype');
+        var index = $collectionHolder.data('index');
+        var newForm = prototype;
+        newForm = newForm.replace(/__name__label__/g, 'Ticket n°' + index)
+        $collectionHolder.data('index', index + 1);
+        var $newFormLi = $('<li></li>').append(newForm);
+        $addTicketButton.before($newFormLi);
+        addTicketFormDeleteLink($newFormLi);
+    }
+    function addTicketFormDeleteLink($tagFormLi) {
+        var $removeFormButton = $('<button type="button">Supprimer ce ticket</button>');
+        $tagFormLi.append($removeFormButton);
+        $removeFormButton.on('click', function(e) {
+            $tagFormLi.remove();
+        });   
+    
+    }
+    function age($formBooking.tickets.birthdate) { 
+	    birthdate = new Date($formbooking.tickets.birthdate); 
+	    return new Number((new Date().getTime() - birthday.getTime()) / 31536000000).toFixed(0); } 
+    
+    
+    </script>
+{% endblock %}
+

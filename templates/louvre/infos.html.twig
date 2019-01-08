@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+    
+{% block body %}
+    </br>
+	<h2 class="text-center">{{ "wordInformation"|trans}}</h2>
+
+	<h4>{{ "openingTime"|trans}}</h4>
+	<p> {{ "monday"|trans}} : 9h - 18h <br/>
+		{{ "tuesday"|trans}} : Fermé <br/>
+		{{ "wednesday"|trans}} : 9h - 21h45 <br/>
+		{{ "thursday"|trans}} : 9h - 18h <br/>
+		{{ "friday"|trans}} : 9h -21h45 <br/>
+		{{ "saturday"|trans}} : 9h - 18h <br/>
+		{{ "sunday"|trans}} : 9h - 18h </p>
+
+	<p>{{ "closing"|trans}}</p>
+
+    <p>{{ "daysOff"|trans}}</p>
+
+	<hr>
+
+	<h4>{{ "prices"|trans}}</h4>
+	<p> {{ "kids"|trans}} : {{ "free"|trans}} <br/>
+	 {{ "kids2"|trans}} : 8€ <br/>
+	 {{ "adults"|trans}} : 16€ <br/>
+	 {{ "seniors"|trans}} : 12€ </p>
+	 <p> {{ "halfday"|trans}} : {{"halfprice"|trans}}.<p>
+	 <p> {{ "reducedPrice"|trans}} : 10€ ({{ "who"|trans}},...) {{ "justificated"|trans}}.</p>
+
+	<hr>
+
+	<h4>{{ "acces"|trans}}</h4>
+	<p> En métro : lignes 1 et 7, station "Palais-Royal / Musée du Louvre" </p>
+
+	<p> En bus : bus n° 21, 24, 27, 39, 48, 68, 69, 72, 81, 95 </p>
+
+	<p>{{ "velib"|trans}}<br/>
+	n°1015 : 2 place A. Malraux	<br/>
+	n°1023 : 165 rue Saint-Honoré	<br/>
+	n°1014 : 5 rue de l’Echelle	<br/>
+	n°1013 : 186 rue Saint-Honoré </p>
+
+	<p> {{ "car"|trans}} : {{ "carPark"|trans}}. </p>
+
+	<p> En Batobus : Escale Louvre, quai François Mitterrand </p>
+
+	<hr>
+
+	<footer>
+	  	<p class="text-center"> Musée du Louvre © 2018.</p>
+	</footer> <br/>
+
+
+{% endblock %}
