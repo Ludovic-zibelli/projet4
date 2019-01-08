@@ -12,7 +12,6 @@ use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\Booking;
 use App\Entity\Ticket;
 use App\Form\BookingType;
-use App\Service\ServiceBooking;
 
 
 class LouvreController extends AbstractController
@@ -28,7 +27,7 @@ class LouvreController extends AbstractController
     /**
      * @Route("/booking", name="booking")
      */
-    public function booking(Request $request, ObjectManager $manager, ValidatorInterface $validator, ServiceBooking $booking)
+    public function booking(Request $request, ObjectManager $manager, ValidatorInterface $validator)
     {
         $booking = new Booking(); 
         $ticket = new Ticket(); 
@@ -38,8 +37,7 @@ class LouvreController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) 
         {
-                $booking = $serviceBooking->udpatePrice($booking);
-
+            // je crois qu'il faut génèrer ici le numero de réservation
             $manager->persist($booking);
             $manager->flush();
             return $this->redirectToRoute('home');

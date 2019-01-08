@@ -29,8 +29,6 @@
         {{ form_end(formBooking)}}
             
         <div id="container"></div>
-        {# cette div permet de faire apparaitre le calendrier des datepickers. je ne suis pas 
-        sure qu'elle soit tres bien placée #}
 
     </div>
 
@@ -39,40 +37,6 @@
         <script src="{{ asset ('pickadate/picker.date.js')}}"></script>
         <script src="{{ asset ('pickadate/legacy.js')}}"></script>
         <script type="text/javascript">
-
-    var $input = $( '.js-pickadate-booking' ).pickadate({
-            formatSubmit: 'yyyy-mm-dd',
-            hiddenName: true,
-            container: '#container',
-            selectMonths: true,
-            selectYears: 2,
-            firstDay: 1,
-            min: +1,
-            disable: [2, 7, [2019,4,1], [2019,11,25], [2020,4,1], [2020,11,25] ], 
-            monthsFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
-            weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
-            today: 'aujourd\'hui',
-            clear: 'effacer',
-
-        })
-
-    var $input1 = $( '.js-pickadate-ticket' ).pickadate({
-            formatSubmit: 'yyyy-mm-dd',
-            hiddenName: true,
-            container: '#container',
-            labelMonthNext: 'Go to the next month',
-            labelMonthPrev: 'Go to the previous month',
-            labelMonthSelect: 'Pick a month from the dropdown',
-            labelYearSelect: 'Pick a year from the dropdown',
-            selectMonths: true,
-            selectYears: 120,
-            firstDay: 1,
-            max: true,
-            monthsFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
-            weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
-            today: 'aujourd\'hui',
-            clear: 'effacer',
-        })
         
     var $collectionHolder;
     var $addTicketButton = $('<button type="button" class="add_ticket_link">Ajouter un ticket</button>');
@@ -104,11 +68,43 @@
         });   
     
     }
-    function age($formBooking.tickets.birthdate) { 
-	    birthdate = new Date($formbooking.tickets.birthdate); 
-	    return new Number((new Date().getTime() - birthday.getTime()) / 31536000000).toFixed(0); } 
-    
-    
+    var $input = $( '.js-pickadate-booking' ).pickadate({
+            formatSubmit: 'yyyy-mm-dd',
+            hiddenName: true,
+            container: '#container',
+            selectMonths: true,
+            selectYears: 2,
+            firstDay: 1,
+            min: +1,
+            disable: [2, 7, [2019,4,1], [2019,11,25], [2020,4,1], [2020,11,25] ], 
+            monthsFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+            weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+            today: 'Aujourd\'hui',
+            clear: 'Effacer',
+            close: 'Fermer',
+        })
+
+    var $input1 = $( '.js-pickadate-ticket' ).pickadate({
+            formatSubmit: 'yyyy-mm-dd',
+            hiddenName: true,
+            container: '#container',
+            labelMonthNext: 'Go to the next month',
+            labelMonthPrev: 'Go to the previous month',
+            labelMonthSelect: 'Pick a month from the dropdown',
+            labelYearSelect: 'Pick a year from the dropdown',
+            selectMonths: true,
+            selectYears: 120,
+            firstDay: 1,
+            max: true,
+            monthsFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+            weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+            today: 'Aujourd\'hui',
+            clear: 'Effacer',
+            close: 'Fermer',
+        })
+
+        var picker1 = $input1.pickadate('picker')
+
     </script>
 {% endblock %}
 
