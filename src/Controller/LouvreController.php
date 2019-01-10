@@ -2,16 +2,17 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
-use Symfony\Component\Translation\TranslatorInterface;
-use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Ticket;
+use App\Entity\Booking;
+use App\Form\BookingType;
+use App\Service\ServiceBooking;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
-use App\Entity\Booking;
-use App\Entity\Ticket;
-use App\Form\BookingType;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
 class LouvreController extends AbstractController
@@ -27,7 +28,7 @@ class LouvreController extends AbstractController
     /**
      * @Route("/booking", name="booking")
      */
-    public function booking(Request $request, ObjectManager $manager, ValidatorInterface $validator)
+    public function booking(Request $request, ObjectManager $manager, ValidatorInterface $validator, ServiceBooking $serviceBooking)
     {
         $booking = new Booking(); 
         $ticket = new Ticket(); 
@@ -37,7 +38,8 @@ class LouvreController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) 
         {
-            // je crois qu'il faut génèrer ici le numero de réservation
+            $booking = $serviceBooking->updatePrice($booking);
+            
             $manager->persist($booking);
             $manager->flush();
             return $this->redirectToRoute('home');

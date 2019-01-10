@@ -1,0 +1,39 @@
+.hometext {
+    color: white;
+}
+
+.background {
+    background-image: url('/image/pyramide2.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.container1 {
+    background-color: #343a40;
+}
+
+h1, h2, h3, h4 {
+    color: white;
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 10;
+    border-top: 2px solid white;
+}
+
+.form-control {
+    background-color: #eceeef
+}
+
+body {
+    color: white;
+}
+
+.jumbotron {
+    color: #343a40;
+
+}
+
+

@@ -3,12 +3,16 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
+
+        {% block stylesheets %}
         <link rel="stylesheet" 
         href="https://bootswatch.com/4/lux/bootstrap.min.css">
         <link rel="stylesheet" href="{{ asset('pickadate/themes/default.css')}}">
         <link rel="stylesheet" href="{{ asset('pickadate/themes/default.date.css')}}">
-        {% block stylesheets %}{% endblock %}
+        <link rel="stylesheet" href="{{ asset('css/mycss.css')}}">
+        {% endblock %}
     </head>
+
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="{{ path('home') }}">Musée du Louvre</a>

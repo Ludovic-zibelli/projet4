@@ -2,21 +2,21 @@
 
  {% form_theme formBooking 'bootstrap_4_layout.html.twig' %}
     
-{% block body %}   
-
-    <div class="container">
-        <hr>
-        <h1>{{"booking"|trans}}</h1>
+{% block body %}  
+</br>
+    <div class="container container1">
+        </br>
+        <h1 class="text-center">{{"booking"|trans}}</h1>
         <hr>
 
         {{ form_start(formBooking) }}
-            {{ form_row(formBooking.email) }}
-            {{ form_row(formBooking.visitdate) }}
+            <h4>{{ form_row(formBooking.email) }}</h4>
+            <h4>{{ form_row(formBooking.visitdate) }}</h4>
         
             <hr>
             <h3>{{"buy"|trans}}</h3>
             <hr>
-            <div class="jumbotron">
+            <div class="blockticket jumbotron">
                 <ul class="tickets" data-prototype="{{ form_widget(formBooking.tickets.vars.prototype)|e('html_attr') }}">
                     {{ form_row(formBooking.tickets)}}
                 </ul>
@@ -24,10 +24,11 @@
             {{ form_row(formBooking.bookingnumber) }}
             {{ form_row(formBooking.totalprice) }}    
 
-        <button type="submit" class="btn btn-success">{{"endBooking"|trans}}</button>
+        <button type="submit" class="btn btn-secondary">{{"endBooking"|trans}}</button>
 
         {{ form_end(formBooking)}}
-            
+        </br>
+        </br>
         <div id="container"></div>
 
     </div>
@@ -54,12 +55,16 @@
         var prototype = $collectionHolder.data('prototype');
         var index = $collectionHolder.data('index');
         var newForm = prototype;
-        newForm = newForm.replace(/__name__label__/g, 'Ticket n°' + index)
+        newForm = newForm.replace(/__name__label__/g, 'Ticket n°' + index);
+        newForm = newForm.replace(/__name__/g, index);
+        console.log(index);
         $collectionHolder.data('index', index + 1);
         var $newFormLi = $('<li></li>').append(newForm);
         $addTicketButton.before($newFormLi);
         addTicketFormDeleteLink($newFormLi);
+        createpickadate();
     }
+
     function addTicketFormDeleteLink($tagFormLi) {
         var $removeFormButton = $('<button type="button">Supprimer ce ticket</button>');
         $tagFormLi.append($removeFormButton);
@@ -82,9 +87,10 @@
             today: 'Aujourd\'hui',
             clear: 'Effacer',
             close: 'Fermer',
-        })
+        });
 
-    var $input1 = $( '.js-pickadate-ticket' ).pickadate({
+        function createpickadate() {
+           $( '.js-pickadate-ticket' ).pickadate({
             formatSubmit: 'yyyy-mm-dd',
             hiddenName: true,
             container: '#container',
@@ -101,9 +107,11 @@
             today: 'Aujourd\'hui',
             clear: 'Effacer',
             close: 'Fermer',
-        })
+        });  
+        }   
+        createpickadate();    
 
-        var picker1 = $input1.pickadate('picker')
+        //var picker1 = $input1.pickadate('picker')
 
     </script>
 {% endblock %}
