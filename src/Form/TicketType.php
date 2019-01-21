@@ -22,7 +22,7 @@ class TicketType extends AbstractType
                 'Journée' => true,
                 'Demie-Journée (à partir de 14h)' => false,)
             ))
-        ->add('reducedprice', null, array('label' => 'Tarif réduit (pour x, x, et x)'));
+        ->add('reducedprice', null, array('label' => 'Tarif réduit (pour Les étudiants, employés du musée, d’un service du Ministère de la Culture, militaires sur présentation de votre carte justificative)'));
     }
     public function configureOptions(OptionsResolver $resolver)
 {

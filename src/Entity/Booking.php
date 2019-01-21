@@ -35,6 +35,25 @@ class Booking
      * @Assert\NotBlank()
      */
     private $totalprice;
+
+    /**
+     * Permet de generer un numero de commande
+     * 
+     * @ORM\PrePersist
+     *
+     * @return void
+     */
+    public function initializeNbr($lenght=12) {
+        if(empty($this->bookingnumber)) {
+            $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $bookingnumber = '';
+            for($i=0; $i<$length; $i++){
+            $bookingnumber .= $chars[rand(0, strlen($chars)-1)];
+            }
+        return $bookingnumber;
+        }
+    }
+
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Ticket", mappedBy="booking", orphanRemoval=true, cascade = {"persist"})
      */

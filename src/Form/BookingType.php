@@ -16,6 +16,7 @@ class BookingType extends AbstractType
             ->add('visitdate', DateType::class, array('label' => 'Votre jour de visite', 'widget' => 'single_text', 'attr' => ['class' => 'js-pickadate-booking']))
             ->add('bookingnumber')
             ->add('totalprice');
+
         $builder
             ->add('tickets', CollectionType::class, array(
             'entry_type' => TicketType::class,

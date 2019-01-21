@@ -32,12 +32,10 @@
         <div id="container"></div>
 
     </div>
+    {% endblock %} 
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="{{ asset ('pickadate/picker.js')}}"></script>
-        <script src="{{ asset ('pickadate/picker.date.js')}}"></script>
-        <script src="{{ asset ('pickadate/legacy.js')}}"></script>
-        <script type="text/javascript">
+    {% block javascripts %}    
+    <script type="text/javascript">
         
     var $collectionHolder;
     var $addTicketButton = $('<button type="button" class="add_ticket_link">Ajouter un ticket</button>');
@@ -80,8 +78,8 @@
             selectMonths: true,
             selectYears: 2,
             firstDay: 1,
-            min: +1,
-            disable: [2, 7, [2019,4,1], [2019,11,25], [2020,4,1], [2020,11,25] ], 
+            min: new Date,
+            disable: [2, 7, [2019,4,1], [2019,10,1],[2019,11,25], [2020,4,1], [2020,10,1],[2020,11,25], [2021,4,1], [2021,10,1],[2021,11,25], [2022,4,1], [2022,10,1],[2022,11,25] ], 
             monthsFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
             weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
             today: 'Aujourd\'hui',

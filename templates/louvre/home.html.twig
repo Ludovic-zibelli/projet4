@@ -3,20 +3,17 @@
 {% block body %}
 <div class="background">
     </br>
-        <div class="container">
+        <div class="container pb-2 pr-2 pl-2">
         </br>
-            <h1 class="hometext">{{ 'titleWelcomeLouvre'|trans }}</h1>
+            <h1 class="text-center">{{ 'titleWelcomeLouvre'|trans }}</h1>
             <hr>    
 
-            <p class="hometext">{{ "descriptionMuseum1"|trans }}</p>
+            <p class="hometext">{{ "descriptionMuseum1"|trans |raw }}</p>
 
             <p class="hometext">{{ "descriptionMuseum2"|trans }}</p>
-
-            <div class="text-center">
-                <form action="booking">
-                    <button type="submit" class="btn btn-secondary">{{"wordTicketing"|trans}}</button>
-                    {# <input type="submit" value={{ "wordTicketing"|trans }} /> #}
-                </form>
+            </br>
+            <div class="container text-center">
+                <a href="{{path('booking') }}" class="btn blue">{{"wordTicketing"|trans}}</a>
             </div>
         </br>
         </br>

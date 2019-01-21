@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use DateTime;
 use App\Entity\Ticket;
 use App\Entity\Booking;
 use App\Form\BookingType;
@@ -35,17 +36,54 @@ class LouvreController extends AbstractController
         $booking->addTicket($ticket);
  
         $form = $this->createForm(BookingType::class, $booking);
+        
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()) 
+
+        if($form->isSubmitted($booking) && $form->isValid($booking)) 
         {
-            $booking = $serviceBooking->updatePrice($booking);
-            
-            $manager->persist($booking);
-            $manager->flush();
-            return $this->redirectToRoute('home');
-        }            
-        return $this->render('louvre/booking.html.twig', array('formBooking' => $form->createView(),));
-    }  
+            $todayDate = new DateTime();
+            $time = $todayDate->format('H');
+            $time = $time + 1;
+
+            $ticketprice = $booking->getTicketprice(); 
+
+            if ($time > 13 && $ticketprice == true) {
+                $this->addFlash(
+                    'warning', 
+                    "Votre commande n'est pas valide. Vous ne pouvez commander de billet journée, pour aujourd'hui, après 14h. Choississez un billet Demie-journée."
+                    );
+                //pas de redirection, on reste sur la même page
+            }
+            else {
+                    // je dois récupérer ici le nbr de billets commandé chaque jour mais avec la liaison entre les tables , pfouuu.
+                $repository = $this->getDoctrine()->getRepository(Ticket::class);
+                $nbrTicket = $repository->findBy(
+                        ['date' => $booking->getVisitdate()]);
+                            
+                // if ($nbrTicket > 999) {
+                if {                     
+                    $this->addFlash(
+                        'warning', 
+                        "Il y a déjà plus de 1000 tickets réservés pour ce jour. Vous ne pouvez plus réserver. Choisissez un autre jour !"
+                        );
+                        //pas de redirection, on reste sur la même page
+                    } 
+                else {
+                    $booking = $serviceBooking->updatePrice($booking);
+
+                    $manager->persist($booking);
+                    $manager->flush();
+                    return $this->redirectToRoute('home');
+
+                    $this->addFlash(
+                        'success', 
+                        "Votre commande a bien été prise en compte"
+                        );
+                }
+            }     
+        }                
+       return $this->render('louvre/booking.html.twig', array('formBooking' => $form->createView()));
+}  
 
     /**
      * @Route("/infos", name="infos")

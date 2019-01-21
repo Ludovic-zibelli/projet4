@@ -1,39 +1,58 @@
-.hometext {
-    color: white;
-}
-
-.background {
-    background-image: url('/image/pyramide2.jpg');
-    background-attachment: fixed;
-    background-size: cover;
-}
-
-.container1 {
-    background-color: #343a40;
-}
-
-h1, h2, h3, h4 {
-    color: white;
-}
-
-hr {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    border: 10;
-    border-top: 2px solid white;
-}
-
-.form-control {
-    background-color: #eceeef
+a {
+    color: #1D8A99;
+    text-shadow: 1px 1px 1px white
 }
 
 body {
     color: white;
 }
 
-.jumbotron {
-    color: #343a40;
-
+h1 {
+    color: #1D8A99;
+    text-shadow: 2px 2px 2px white
 }
 
+h2, h3, h4 {
+    color: white;
+    text-transform: none;
+}
 
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 10;
+    border-top: 1px solid white;
+}
+.background {
+    background-image: url('/image/pyramide2.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.blue {
+    background-color: #1D8A99;
+    color: white;
+}
+
+.blockticket {
+    background-color: #1D8A99;
+}
+
+.btn {
+    text-shadow: 0px 0px 0px;
+}
+
+.container1 {
+    background-color: #343a40;
+    }
+
+.form-control {
+    background-color: #eceeef
+}
+.hometext {
+    color: white;
+}
+
+.jumbotron {
+    color: #343a40;
+}
