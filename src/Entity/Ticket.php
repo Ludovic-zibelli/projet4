@@ -2,8 +2,11 @@
 namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Validator\Constraints as MyAssert;
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TicketRepository")
+ * @MyAssert\TicketDay
  */
 class Ticket
 {
@@ -27,7 +30,8 @@ class Ticket
     private $firstname;
     /**
      * @ORM\Column(type="date")
-     * @Assert\Date
+     * @Assert\NotBlank(message="Votre date de naissance doit être renseigné")
+     * @Assert\Date 
      */
     private $birthdate;
     /**
@@ -37,13 +41,10 @@ class Ticket
     private $country;
     /**
      * @ORM\Column(type="boolean")
-     * @Assert\Type("\Checkbox")
      */
     private $reducedprice;
     /**
      * @ORM\Column(type="boolean")
-     * @Assert\NotBlank()
-     * @Assert\Type("\Checkbox")
      */
     private $ticketprice;
     /**
@@ -73,11 +74,11 @@ class Ticket
         $this->firstname = $firstname;
         return $this;
     }
-    public function getBirthdate(): ?\DateTimeInterface
+    public function getBirthdate(): ?\DateTime
     {
         return $this->birthdate;
     }
-    public function setBirthdate(\DateTimeInterface $birthdate): self
+    public function setBirthdate(\DateTime $birthdate = null): self
     {
         $this->birthdate = $birthdate;
         return $this;

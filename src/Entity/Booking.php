@@ -4,6 +4,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Validator\Constraints as MyAssert;
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\BookingRepository")
  */
@@ -17,7 +19,6 @@ class Booking
     private $id;
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
      */
     private $bookingnumber;
     /**
@@ -27,37 +28,22 @@ class Booking
     private $email;
     /**
      * @ORM\Column(type="date")
+     * @Assert\NotBlank(message="Votre date de visite doit être renseigné")
      * @Assert\Date
      */
     private $visitdate;
+
     /**
      * @ORM\Column(type="decimal", precision=10, scale=0)
-     * @Assert\NotBlank()
      */
     private $totalprice;
 
     /**
-     * Permet de generer un numero de commande
-     * 
-     * @ORM\PrePersist
-     *
-     * @return void
-     */
-    public function initializeNbr($lenght=12) {
-        if(empty($this->bookingnumber)) {
-            $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            $bookingnumber = '';
-            for($i=0; $i<$length; $i++){
-            $bookingnumber .= $chars[rand(0, strlen($chars)-1)];
-            }
-        return $bookingnumber;
-        }
-    }
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Ticket", mappedBy="booking", orphanRemoval=true, cascade = {"persist"})
+     * @Assert\Valid
      */
     protected $tickets;
+
     public function __construct()
     {
         $this->tickets = new ArrayCollection();
@@ -88,7 +74,7 @@ class Booking
     {
         return $this->visitdate;
     }
-    public function setVisitdate(\DateTimeInterface $visitdate): self
+    public function setVisitdate(\DateTime $visitdate=null): self
     {
         $this->visitdate = $visitdate;
         return $this;

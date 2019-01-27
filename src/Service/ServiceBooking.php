@@ -1,35 +1,48 @@
 <?php
+
 namespace App\Service;
 
+use DateTime;
+use DateInterval;
 use App\Entity\Ticket;
 use App\Entity\Booking;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints\Date;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
+
 class ServiceBooking {
-    		
-	private function CalculAge(Booking $booking)
-	// on recupère les dates et on calcule l'âge du visiteur
-	{
-		$datetime1 = new DateTime($booking->getBirthdate());
-		$datetime2 = new DateTime();
-			// if($datetime1 && $datetime2 && $datetime1 > $datetime2 ) {
-		$age = $datetime1->diff($datetime2);
-		$age->format('%y');
-		return $age;
-			// }
-			// else
+			
+	private $entityManager;
+
+	public function __construct(EntityManagerInterface $entityManager){
+		$this->entityManager = $entityManager;
 	}
 
-	private function CalculPriceTicket(Booking $booking)
+	public function create(Booking $booking){
+		$this->updatePrice($booking);
+		$this->persist($booking);
+		$this->flush();
+	}
+
+	public function CalculAge(Ticket $ticket)
+	// on recupère les dates et on calcule l'âge du visiteur
+	{
+		$datetime1 = $ticket->getBirthdate();
+		$datetime2 = new DateTime();
+		$age = $datetime1->diff($datetime2);
+		return $age->format('y');
+	}
+
+	public function CalculPriceTicket(Ticket $ticket)
 	// on récupère l'age du visiteur et on calcule le prix de son billet
 	{
-		$age = CalculAge();
-		$ticketprice = $booking->getTicketprice();
-		$reducedprice = $booking->getReducedprice();
-		if  ($ticketprice == true ) {
-			if ($reducedprice == true) {
-				if ($age < 4) {
+		$age = $this->CalculAge($ticket);
+		$ticketPrice = $ticket->getTicketprice();
+		$reducedprice = $ticket->getReducedprice();
+		
+				if ($age < 4) {	
 					$priceTicket = 0;
 				}					
 				elseif ($age > 3 & $age < 12) {
@@ -38,123 +51,35 @@ class ServiceBooking {
 				elseif ($age > 59) {
 					$priceTicket = 12;
 				}			
-				else {
+				else if ($reducedprice == true) {
+					$priceTicket = 8;
+				}			
+			    else {
 					$priceTicket = 16;
 				}
-			}			
-			else {
-				$priceTicket = 10;
-			}
-		}
-		elseif  ($ticketprice == false) {
-			if ($reducedprice == true) {
-				if ($age < 4) {
-					$priceTicket = 0;
-				}					
-				elseif ($age > 3 & $age < 12) {
-					$priceTicket = 4;
-				}					
-				elseif ($age > 59) {
-					$priceTicket = 6;
-				}			
-				else {
-					$priceTicket = 8;
-				}
-			}			
-			else {
-				$priceTicket = 5;
-			}
-		}
+				if ($ticketPrice == false) $priceTicket = $priceTicket / 2;
+		
+		return $priceTicket;
+		
 	}
-	public function updatePrice($booking) 		
+	public function updatePrice(Booking $booking): Booking 		
 	// On récupère le prix de chaque billet et on les ajoute pour avoir le prix de la commande		
 	{
-		$priceTicket = CalculAge();
-		while ($priceTicket = true ) {
-			$totalPrice->setTotalprice();
-			$totalPrice = $totalPrice + $ticketPrice;
+		$tickets = $booking->getTickets();
+		$total = 0;
+
+		foreach($tickets as $ticket)
+		{
+			$oneprice = $this->CalculpriceTicket($ticket);
+			// $ticket->setPrice($oneprice);
+			// ajouter le prix de chaque ticket il faut persister et flush les tickets
+			$total = $total + $oneprice;
 		}
-					
-		$booking->setTotalPrice($totalPrice);
 
-			}
-		
-		}
-
+		$booking->setTotalPrice($total);
+		// persister et flush le booking (contruct + entity manager)
+		return $booking;
+	}
+}	
 	
 	
-	
-	
-	
-// 	{
-// 			echo $booking->getEmail();
-// 			$tickets = $booking->getTickets();
-
-// 			foreach($tickets as $ticket) {
-// 				$age = $ticket->getAge();
-// 			}
-// 		}
-
-// 			/*
-// 				$em = $this->em;
-// 				$tickets = $booking->getTickets();
-				
-// 				$totalPrice = 0;				
-// 				foreach($tickets as $ticket)
-// 				{
-// 					$age = $ticket->getAge();
-//                     // j'ai besoin qu'on m'explique les lignes du dessus
-                    
-// function CalculAge($booking) {
-// 	$datetime1 = new DateTime($booking->getBirthdate());
-// 	$datetime2 = new DateTime();
-// 	$interval = $datetime1->diff($datetime2);
-// 	$interval->format('%y');
-// 	return $interval;
-// }   
-// // function PriceTicket () {
-// // 	$age = CalculAge();
-// // 	if  ({{$formbooking.tickets.ticketprice = true}}) {
-// // 		if ($formbooking.tickets.reducedprice = true) {
-// // 			$priceTicket = 10 
-// // 		else {
-// // 			if ($age < 4)
-// // 				$priceTicket = 0
-// // 			if ($age > 3 & $age < 12)
-// // 				$priceTicket = 8
-// // 			if ($age >59)
-// // 				$priceTicket = 12
-// // 			elseif
-// // 				$priceTicket = 16
-// // 	if  ($formbooking.tickets.ticketprice = false) {
-// // 		if ($formbooking.tickets.reducedprice = true) {
-// // 			$priceTicket =  5
-// // 		else {
-// // 			if ($age < 4)
-// // 				$priceTicket = 0
-// // 			if ($age > 3 & $age < 12)
-// // 				$priceTicket = 4
-// // 			if ($age >59)
-// // 				$priceTicket = 6
-// // 			elseif
-// // 				$priceTicket = 8
-// // }		
-// // 					$ticket->setPrice($ticketPrice);
-					
-// // 					$totalPrice = $totalPrice + $ticketPrice;
-					
-// // 					$em->persist($ticket);
-// // 				}
-				
-// // 				$booking->setTotalPrice($totalPrice);
-				
-// // 				$em->persist($booking);
-// // 				$em->flush();
-				
-// // 				return $booking;
-				
-// // 		}
-	
-// } 
-//     }*/
-//         }

@@ -14,8 +14,8 @@ class BookingType extends AbstractType
         $builder
             ->add('email', null, array('label' => 'Votre adresse email'))
             ->add('visitdate', DateType::class, array('label' => 'Votre jour de visite', 'widget' => 'single_text', 'attr' => ['class' => 'js-pickadate-booking']))
-            ->add('bookingnumber')
-            ->add('totalprice');
+            ->add('bookingnumber', null, ['disabled'=>true])
+            ->add('totalprice', null, ['disabled'=>true]);
 
         $builder
             ->add('tickets', CollectionType::class, array(
@@ -23,12 +23,14 @@ class BookingType extends AbstractType
             'label' => false,
             'allow_add' => true,
             'by_reference' => false,
-            'allow_delete' => true));
+            'allow_delete' => true,));
     }
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'data_class' => Booking::class,
+            
+            'cascade_validation' => true,
         ));
     }
 }
