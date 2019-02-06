@@ -19,6 +19,16 @@ class BookingRepository extends ServiceEntityRepository
         parent::__construct($registry, Booking::class);
     }
 
+    public function countByDay($date)
+    {
+        return $this->createQueryBuilder('b')
+            ->innerJoin('b.tickets', 't', "WITH", "b.visitdate = :currentDate")    
+            ->setParameter('currentDate', $date)
+            ->select('COUNT(t)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
     // /**
     //  * @return Booking[] Returns an array of Booking objects
     //  */

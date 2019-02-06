@@ -1,8 +1,9 @@
 <?php
 namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 use App\Validator\Constraints as MyAssert;
+use Symfony\Component\PropertyAccess\PropertyAccess;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TicketRepository")
@@ -78,7 +79,7 @@ class Ticket
     {
         return $this->birthdate;
     }
-    public function setBirthdate(\DateTime $birthdate = null): self
+    public function setBirthdate(\DateTime $birthdate=null): self
     {
         $this->birthdate = $birthdate;
         return $this;
@@ -120,3 +121,9 @@ class Ticket
         return $this;
     }
 }
+
+$ticket = new Ticket();
+$propertyAccessor = PropertyAccess::createPropertyAccessorBuilder()
+    ->enableMagicCall()
+    ->getPropertyAccessor();
+$propertyAccessor->setValue($ticket, 'ticketPrice', 'ticketPrice');

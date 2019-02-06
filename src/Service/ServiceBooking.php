@@ -7,6 +7,7 @@ use DateInterval;
 use App\Entity\Ticket;
 use App\Entity\Booking;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints\Date;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -22,17 +23,17 @@ class ServiceBooking {
 
 	public function create(Booking $booking){
 		$this->updatePrice($booking);
-		$this->persist($booking);
-		$this->flush();
+		$this->entityManager->persist($booking);
+		$this->entityManager->flush();		
 	}
 
 	public function CalculAge(Ticket $ticket)
 	// on recupère les dates et on calcule l'âge du visiteur
 	{
 		$datetime1 = $ticket->getBirthdate();
-		$datetime2 = new DateTime();
+		$datetime2 = new DateTime('now');
 		$age = $datetime1->diff($datetime2);
-		return $age->format('y');
+		return $age->format('%y');
 	}
 
 	public function CalculPriceTicket(Ticket $ticket)
@@ -52,7 +53,7 @@ class ServiceBooking {
 					$priceTicket = 12;
 				}			
 				else if ($reducedprice == true) {
-					$priceTicket = 8;
+					$priceTicket = 10;
 				}			
 			    else {
 					$priceTicket = 16;
@@ -60,6 +61,7 @@ class ServiceBooking {
 				if ($ticketPrice == false) $priceTicket = $priceTicket / 2;
 		
 		return $priceTicket;
+		
 		
 	}
 	public function updatePrice(Booking $booking): Booking 		
