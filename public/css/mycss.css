@@ -24,7 +24,7 @@ hr {
     border-top: 1px solid white;
 }
 .background {
-    background-image: url('/image/pyramide2.jpg');
+    background-image: url('public/image/pyramide2.jpg');
     background-attachment: fixed;
     background-size: cover;
 }

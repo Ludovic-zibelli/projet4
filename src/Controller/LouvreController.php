@@ -71,9 +71,6 @@ class LouvreController extends AbstractController
         //ici, il faut que je recupère le prix de la dernière commande
             // $lastbooking = $repo->findBy([], ['id' => 'desc'],1,0);
             // $lastbooking->getTotalprice();
-            // echo '<pre>';
-            // var_dump($lastbooking);
-            // echo '</pre>';
 
         // Set your secret key: remember to change this to your live secret key in production
         // See your keys here: https://dashboard.stripe.com/account/apikeys
