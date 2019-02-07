@@ -20,6 +20,7 @@ class BookingRepository extends ServiceEntityRepository
     }
 
     public function countByDay($date)
+    //fonction qui compte le nombre de ticket pour un jour donné
     {
         return $this->createQueryBuilder('b')
             ->innerJoin('b.tickets', 't', "WITH", "b.visitdate = :currentDate")    
@@ -29,22 +30,15 @@ class BookingRepository extends ServiceEntityRepository
             ->getSingleScalarResult();
     }
 
-    // /**
-    //  * @return Booking[] Returns an array of Booking objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('b.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+    // public function lastBooking()
+    // {
+    //     return $this->createQueryBuilder('b')
+    //         ->orderBy('b.id', 'DESC')
+    //         ->setMaxResults(1)
+    //         ->getQuery()
+    //     ;
+    // }
+    
 
     /*
     public function findOneBySomeField($value): ?Booking

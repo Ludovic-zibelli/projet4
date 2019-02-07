@@ -7,6 +7,7 @@ use App\Entity\Ticket;
 use App\Entity\Booking;
 use App\Form\BookingType;
 use App\Service\ServiceBooking;
+use App\Repository\BookingRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -65,10 +66,28 @@ class LouvreController extends AbstractController
     /**
      * @Route("/payment", name="payment")
      */
-    public function payment(\Swift_Mailer $mailer)
-    // public function payment($argumentbookingprecedent)
+    public function payment(\Swift_Mailer $mailer, BookingRepository $repo, EntityManagerInterface $entitymanager)
     {
-        // $argumentbookingprecedent->getTotalPrice(); 
+        //ici, il faut que je recupère le prix de la dernière commande
+            // $lastbooking = $repo->findBy([], ['id' => 'desc'],1,0);
+            // $lastbooking->getTotalprice();
+            // echo '<pre>';
+            // var_dump($lastbooking);
+            // echo '</pre>';
+
+        // Set your secret key: remember to change this to your live secret key in production
+        // See your keys here: https://dashboard.stripe.com/account/apikeys
+        \Stripe\Stripe::setApiKey("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
+
+        // Token is created using Checkout or Elements!
+        // Get the payment token ID submitted by the form:
+        $token = $_POST['stripeToken'];
+        $charge = \Stripe\Charge::create([
+            'amount' => 999,
+            'currency' => 'eur',
+            'description' => 'Paiement de test (aterme, mettre l\'id de la commande pas exemple)',
+            'source' => $token,
+        ]);
 
         // if {
         // le paiement est accepté        
