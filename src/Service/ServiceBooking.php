@@ -22,8 +22,8 @@ class ServiceBooking {
 	}
 
 	public function create(Booking $booking){
-		$this->updatePrice($booking);
-		$this->entityManager->persist($booking);
+		$this->update($booking);
+		$this->entityManager->persist($booking);		
 		$this->entityManager->flush();		
 	}
 
@@ -40,46 +40,78 @@ class ServiceBooking {
 	// on récupère l'age du visiteur et on calcule le prix de son billet
 	{
 		$age = $this->CalculAge($ticket);
-		$ticketPrice = $ticket->getTicketprice();
+		$ticketprice = $ticket->getTicketprice();
 		$reducedprice = $ticket->getReducedprice();
 		
 				if ($age < 4) {	
 					$priceTicket = 0;
 				}					
 				elseif ($age > 3 & $age < 12) {
-					$priceTicket = 8;
+					if ($ticketprice == false) {
+						$priceTicket = 4;
+					}
+					else {
+						$priceTicket = 8;
+					}
+					
 				}					
 				elseif ($age > 59) {
-					$priceTicket = 12;
-				}			
-				else if ($reducedprice == true) {
-					$priceTicket = 10;
-				}			
-			    else {
-					$priceTicket = 16;
+					if ($ticketprice == false) {
+						$priceTicket = 6;
+					}
+					elseif ( $reducedprice == true) {
+						$priceTicket = 10;
+					}	
+					else {
+						$priceTicket = 12;
+					}
 				}
-				if ($ticketPrice == false) $priceTicket = $priceTicket / 2;
+					
+				else {
+					if ($ticketprice == false) {
+						$priceTicket = 8;
+					}
+					elseif ( $reducedprice == true) {
+						$priceTicket = 10;
+					}	
+					else {
+						$priceTicket = 16;
+					}
+				}
 		
-		return $priceTicket;
-		
-		
+		return $priceTicket;		
 	}
-	public function updatePrice(Booking $booking): Booking 		
-	// On récupère le prix de chaque billet et on les ajoute pour avoir le prix de la commande		
+
+	public function BookingNumber()
+	// on crée un numéro de réservation aléatoire
 	{
+		$chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $bookingnumber = '';
+    for($i=0; $i<8; $i++){
+      $bookingnumber .= $chars[rand(0, strlen($chars)-1)];
+    }
+    return $bookingnumber;
+	}
+
+	public function update(Booking $booking): Booking 		
+	{
+		//on recupère le prix de chaque billet et on les ajoute pour avoir le prix total de la commande
 		$tickets = $booking->getTickets();
 		$total = 0;
 
 		foreach($tickets as $ticket)
 		{
 			$oneprice = $this->CalculpriceTicket($ticket);
-			// $ticket->setPrice($oneprice);
+			// $ticket->setPrice($oneprice); si on a besoin du prix par ticket
 			// ajouter le prix de chaque ticket il faut persister et flush les tickets
 			$total = $total + $oneprice;
 		}
-
 		$booking->setTotalPrice($total);
-		// persister et flush le booking (contruct + entity manager)
+
+		// on crée le numéro de commande aléatoire
+		$bookingnumber = $this->BookingNumber();
+		$booking->setBookingnumber($bookingnumber);
+
 		return $booking;
 	}
 }	

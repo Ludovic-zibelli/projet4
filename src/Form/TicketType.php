@@ -13,9 +13,9 @@ class TicketType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('name', null, array('label' => 'Votre nom de famille'))
-        ->add('firstname', null, array('label' => 'Votre prénom'))
-        ->add('country', CountryType::class, array('label' => 'Votre pays'))
+        ->add('name', null, array('label' => 'Nom'))
+        ->add('firstname', null, array('label' => 'Prénom'))
+        ->add('country', CountryType::class, array('label' => 'Pays de résidence'))
         ->add('birthdate', BirthdayType::class, array('label' => 'Votre date de naissance', 'widget' => 'single_text', 'attr' => ['class' => 'js-pickadate-ticket']))
         ->add('ticketprice', ChoiceType::class, array('label' => 'Billet journée ou demie-journée',
             'choices'  => array(

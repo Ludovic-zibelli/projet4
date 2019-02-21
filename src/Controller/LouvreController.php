@@ -6,7 +6,10 @@ use DateTime;
 use App\Entity\Ticket;
 use App\Entity\Booking;
 use App\Form\BookingType;
+use App\Service\ServiceMailer;
+use App\Service\ServiceStripe;
 use App\Service\ServiceBooking;
+use App\Repository\TicketRepository;
 use App\Repository\BookingRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,11 +17,11 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
-class LouvreController extends AbstractController
+class LouvreController extends Controller
 {
     /**
      * @Route("/", name="home")
@@ -66,51 +69,46 @@ class LouvreController extends AbstractController
     /**
      * @Route("/payment", name="payment")
      */
-    public function payment(\Swift_Mailer $mailer, BookingRepository $repo, EntityManagerInterface $entitymanager)
+    public function payment(BookingRepository $repo)
     {
-        //ici, il faut que je recupère le prix de la dernière commande
-            // $lastbooking = $repo->findBy([], ['id' => 'desc'],1,0);
-            // $lastbooking->getTotalprice();
+        //je recupère le prix de la dernière commande dans la variable $p
+        $lastbookingprice = $repo->findBy([], ['id' => 'desc'],1,0);
+        $p = $lastbookingprice[0]->getTotalprice();
 
-        // Set your secret key: remember to change this to your live secret key in production
-        // See your keys here: https://dashboard.stripe.com/account/apikeys
-        \Stripe\Stripe::setApiKey("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
+        return $this->render('louvre/payment.html.twig', ['p' => $p]);
+    }
 
-        // Token is created using Checkout or Elements!
-        // Get the payment token ID submitted by the form:
-        $token = $_POST['stripeToken'];
-        $charge = \Stripe\Charge::create([
-            'amount' => 999,
-            'currency' => 'eur',
-            'description' => 'Paiement de test (aterme, mettre l\'id de la commande pas exemple)',
-            'source' => $token,
-        ]);
+    /**
+     * @Route("/charge", name="charge")
+     */
+    public function charge(BookingRepository $repo,\Swift_Mailer $mailer, TicketRepository $repoticket,  ServiceStripe $serviceStripe)
+    {
+            $lastbooking = $repo->findBy([], ['id' => 'desc'],1,0);
+                $price = $lastbooking[0]->getTotalprice(); 
+                $number = $lastbooking[0]->getBookingnumber(); 
+                $email = $lastbooking[0]->getEmail();   
+                $date = $lastbooking[0]->getVisitDate();
+                $date = $date->format('d/m/Y'); 
+                $id = $lastbooking[0]->getId();
+           
+            $serviceStripe->payment($price, $number);
 
-        // if {
-        // le paiement est accepté        
-        // $message = (new \Swift_Message('Confirmation de réservation'))
-        // ->setFrom('réservation@muséedulouvre.fr')
-        // ->setTo($argumentbookingprecedent->getEmail())
-        // ->setBody(
-        //     $this->renderView(
-        //         'email.html.twig'
-        //     ),
-        //     'text/html');
+            $message = (new \Swift_Message('Votre paiement pour le Musée du Louvre'))
+            ->setFrom('carolineberlemont@gmail.com')
+            ->setTo($email)
+            ->setBody(
+                $this->renderView(
+                    'louvre/registrations.html.twig',
+                    ['date' => $date, 
+                    'price' => $price, 
+                    'number' => $number, 
+                    'names' => $repoticket->findBy(['id' => $id], [], [], [] )
+                    ]
+                ),
+                'text/html');
+                $mailer->send($message);
 
-        //     $mailer->send($message);
-        //     return $this->render('.../payment.html.twig');
-        // }
-        
-        // else { 
-        // le paiement n'est pas passé
-        // on reste sur la même page, on envoi un message flash pour dire que ça n'est pas 
-        // passé et qu'il faut recommencer la manip
-        // $this->addFlash(
-        //              'warning',
-        //              "le paiement n'a pas été accepté, merci de recommancer"
-        //              );  
-
-        return $this->render('louvre/payment.html.twig');
+        return $this->render('louvre/charge.html.twig');
     }
 
     /**

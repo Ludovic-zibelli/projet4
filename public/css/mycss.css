@@ -23,8 +23,9 @@ hr {
     border: 10;
     border-top: 1px solid white;
 }
+
 .background {
-    background-image: url('public/image/pyramide2.jpg');
+    background-image: url('../image/pyramide2.jpg');
     background-attachment: fixed;
     background-size: cover;
 }
@@ -55,6 +56,10 @@ hr {
     text-shadow: 0px 0px 0px;
 }
 
+.col-form-label {
+    display: none;
+}
+
 .container1 {
     background-color: #343a40;
     }
@@ -68,6 +73,7 @@ hr {
 
 .jumbotron {
     color: #343a40;
+    background-color: #1D8A99!important;
 }
 
 /**

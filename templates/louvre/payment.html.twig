@@ -13,13 +13,15 @@
 <div class="container background-payment">
   <h1>PAIEMENT DE VOTRE COMMANDE</h1>
 <div class="container forpayment">
-  <p>Le total de de votre commande s'élève à X euros. Vous pouvez procéder au paiement ci-dessous </p>
+  <p>Le total de de votre commande s'élève à {{p}} euros. Vous pouvez procéder au paiement ci-dessous </p>
   </br>
-  <form action="/#" method="post" id="payment-form">
+  <form action="/charge" method="post" id="payment-form">
     <div class="form-row">
       <label for="card-element">
-        Credit or debit card
-      </label>      
+        Renseignez les éléments de votre carte de crédit/débit :
+      </label> 
+      </br>     
+      </br>
       <div id="card-element">
         <!-- A Stripe Element will be inserted here. -->
       </div>
@@ -27,15 +29,18 @@
       <!-- Used to display form errors. -->
       <div id="card-errors" role="alert"></div>
     </div>
-
     <button>Valider votre paiement</button>
   </form>
+  </br>
+  <div class="container">
+      <a href="{{path('booking') }}" class="btn blue">Annuler la commande</a>
+  </div>
 </div>
 </div>
 
 <script>
 // Create a Stripe client.
-var stripe = Stripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+var stripe = Stripe('pk_test_hYdr1XXf4qr3WF8cqhEHaT1I');
  
 // Create an instance of Elements.
 var elements = stripe.elements();

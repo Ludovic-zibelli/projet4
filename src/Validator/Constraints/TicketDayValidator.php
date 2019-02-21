@@ -15,7 +15,7 @@ class TicketDayValidator extends ConstraintValidator
         // on ne garde que l'heure
         $time = $todayDate->format('H');        
         // on rectifie l'heure au bon fuseau horaire
-        $time = $time + 1;
+        $time += 1;
 
         //on récupère la date de visite-> 
         $visitdate = $value->getBooking()->getVisitdate();
