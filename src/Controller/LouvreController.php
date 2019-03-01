@@ -73,15 +73,15 @@ class LouvreController extends Controller
     {
         //je recupère le prix de la dernière commande dans la variable $p
         $lastbookingprice = $repo->findBy([], ['id' => 'desc'],1,0);
-        $p = $lastbookingprice[0]->getTotalprice();
+        $price = $lastbookingprice[0]->getTotalprice();
 
-        return $this->render('louvre/payment.html.twig', ['p' => $p]);
+        return $this->render('louvre/payment.html.twig', ['p' => $price]);
     }
 
     /**
      * @Route("/charge", name="charge")
      */
-    public function charge(BookingRepository $repo,\Swift_Mailer $mailer, TicketRepository $repoticket,  ServiceStripe $serviceStripe)
+    public function charge(BookingRepository $repo, \Swift_Mailer $mailer, TicketRepository $repoticket,  ServiceStripe $serviceStripe)
     {
             $lastbooking = $repo->findBy([], ['id' => 'desc'],1,0);
                 $price = $lastbooking[0]->getTotalprice(); 
@@ -91,24 +91,46 @@ class LouvreController extends Controller
                 $date = $date->format('d/m/Y'); 
                 $id = $lastbooking[0]->getId();
            
-            $serviceStripe->payment($price, $number);
+            $result = $serviceStripe->payment($price, $number);
 
-            $message = (new \Swift_Message('Votre paiement pour le Musée du Louvre'))
-            ->setFrom('carolineberlemont@gmail.com')
-            ->setTo($email)
-            ->setBody(
+            if ($result == 'success') {
+                $message = (new \Swift_Message('Votre paiement pour le Musée du Louvre'))
+                ->setFrom('carolineberlemont@gmail.com')
+                ->setTo($email)
+                ->setBody(
                 $this->renderView(
                     'louvre/registrations.html.twig',
                     ['date' => $date, 
                     'price' => $price, 
                     'number' => $number, 
-                    'names' => $repoticket->findBy(['id' => $id], [], [], [] )
+                    'tickets' => $repoticket->findBy(['id' => $id])
                     ]
                 ),
                 'text/html');
-                $mailer->send($message);
+                $mailer->send($message);    
+                return $this->render('louvre/charge.html.twig');             
+            }
+            else {
+                $this->addFlash(
+                    'danger',
+                    $message = 'Votre paiement n\'a pas fonctionné. Merci de recommencer'
+                    );  
+                return $this->render('louvre/payment.html.twig', ['p' => $price]);
+            }
+            
+    }
 
-        return $this->render('louvre/charge.html.twig');
+        /**
+     * @Route("/email", name="email")
+     */
+    public function email(\Swift_Mailer $mailer)
+    {
+        $message = (new \Swift_Message('Votre paiement pour le Musée du Louvre'))
+        ->setFrom('carolineberlemont@gmail.com')
+        ->setTo('carolineberlemont@gmail.com')
+        ->setBody('helloword');
+            $mailer->send($message);
+        return $this->render('louvre/infos.html.twig');
     }
 
     /**

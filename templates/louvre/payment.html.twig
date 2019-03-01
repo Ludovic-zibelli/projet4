@@ -12,6 +12,16 @@
 
 <div class="container background-payment">
   <h1>PAIEMENT DE VOTRE COMMANDE</h1>
+  {% for label, messages in app.flashes %}
+            <div class="container">
+            </br>
+                <div class="alert black alert-{{ label }}">
+                    {%  for message in messages %}
+                        <p>{{ message | raw }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
 <div class="container forpayment">
   <p>Le total de de votre commande s'élève à {{p}} euros. Vous pouvez procéder au paiement ci-dessous </p>
   </br>
