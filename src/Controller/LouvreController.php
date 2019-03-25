@@ -81,7 +81,8 @@ class LouvreController extends Controller
     /**
      * @Route("/charge", name="charge")
      */
-    public function charge(BookingRepository $repo, \Swift_Mailer $mailer, TicketRepository $repoticket,  ServiceStripe $serviceStripe)
+    public function charge(BookingRepository $repo, \Swift_Mailer $mailer, TicketRepository $repoticket, 
+    ServiceStripe $serviceStripe, ServiceMailer $serviceMailer)
     {
             $lastbooking = $repo->findBy([], ['id' => 'desc'],1,0);
                 $price = $lastbooking[0]->getTotalprice(); 
@@ -94,20 +95,20 @@ class LouvreController extends Controller
             $result = $serviceStripe->payment($price, $number);
 
             if ($result == 'success') {
-                $message = (new \Swift_Message('Votre paiement pour le Musée du Louvre'))
-                ->setFrom('carolineberlemont@gmail.com')
-                ->setTo($email)
-                ->setBody(
-                $this->renderView(
-                    'louvre/registrations.html.twig',
-                    ['date' => $date, 
-                    'price' => $price, 
-                    'number' => $number, 
-                    'tickets' => $repoticket->findBy(['id' => $id])
-                    ]
-                ),
-                'text/html');
-                $mailer->send($message);    
+                // $message = (new \Swift_Message('Votre paiement pour le Musée du Louvre'))
+                // ->setFrom('nesousx.website@gmail.com')
+                // ->setTo($email)
+                // ->setBody(
+                //     $this->render('louvre/registrations.html.twig', [
+                //     'date' => $date, 
+                //     'price' => $price, 
+                //     'number' => $number, 
+                //     'tickets' => $repoticket->findBy(['id' => $id])
+                //     ]
+                // ),
+                // 'text/html');
+                // $mailer->send($message);
+                $email = $serviceMailer->userConfirmation($email, $number, $date, $price, $repoticket, $id);
                 return $this->render('louvre/charge.html.twig');             
             }
             else {
@@ -118,19 +119,6 @@ class LouvreController extends Controller
                 return $this->render('louvre/payment.html.twig', ['p' => $price]);
             }
             
-    }
-
-        /**
-     * @Route("/email", name="email")
-     */
-    public function email(\Swift_Mailer $mailer)
-    {
-        $message = (new \Swift_Message('Votre paiement pour le Musée du Louvre'))
-        ->setFrom('carolineberlemont@gmail.com')
-        ->setTo('carolineberlemont@gmail.com')
-        ->setBody('helloword');
-            $mailer->send($message);
-        return $this->render('louvre/infos.html.twig');
     }
 
     /**
