@@ -9,36 +9,50 @@
 
 {% block body %}  
 </br>
-    <div class="container container1">
-        </br>
-        <h1 class="text-center">{{"booking"|trans}}</h1>
-        <hr>
+    <div class="container">
+            </br>
+            <h1 class="text-center">{{"booking"|trans}}</h1>
+            <hr>
 
-        {{ form_start(formBooking) }}
+            {{ form_start(formBooking) }}
             <div class="row">
-            <div class="col">{{ form_row(formBooking.email) }}</div>
-            <div class="col">{{ form_row(formBooking.visitdate) }}</div>           
+                <div class="col">{{ form_row(formBooking.email) }}</div>
+                <div class="col">{{ form_row(formBooking.visitdate) }}</div>
             </div>
-            <hr>
-            <h3>{{"buy"|trans}}</h3>
-            <hr>
-            <div class="jumbotron">
-                <ul class="tickets" data-prototype="{{ form_widget(formBooking.tickets.vars.prototype)|e('html_attr') }}">
-                    {{ form_row(formBooking.tickets)}}
-                </ul>
+
+            <div class="row">
+                <div class="col-9">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>{{"buy"|trans}}</h3>
+                        </div>
+                        <div class="jumbotron">
+                            <ul class="tickets" data-prototype="{{ form_widget(formBooking.tickets.vars.prototype)|e('html_attr') }}">
+                                {{ form_row(formBooking.tickets)}}
+                            </ul>
+                        </div>
+                        <div class="container text-center">
+                            <button type="submit" class="btn btn-secondary">{{"endBooking"|trans}}</button>
+                        </div>
+                    {{ form_end(formBooking) }}
+                    </br>
+                    </br>
+                    </div>
             </div>
-            <div class="container text-center">
-                <button type="submit" class="btn btn-secondary">{{"endBooking"|trans}}</button>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Votre commande</h5>
+                    </div>
+                </div>
             </div>
-        {{ form_end(formBooking) }}
-        </br>
-        </br>
-        <div id="container"></div>
-    </div>   
+            <div id="container"></div>
+        </div>
+    </div>
 
     {% endblock %} 
 
-    {% block javascripts %}    
+{% block javascripts %}
 
     <script type="text/javascript">
         

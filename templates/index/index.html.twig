@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+{% block title %}Bienvenue sur la billeterie du musée du Louvre{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-12">
+            <h1 class="text-center">Bienvenue sur la billetterie du musée du Louvre</h1>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12">
+            <p>Le musée du Louvre vous accueille tous les jours, sauf les mardis et quelques jours fériés (les 1er mai, 1er novembre et 25 décembre), de 9h à 18h, jusqu'à 21h45 les jeudis et vendredis. La fermeture des salles débute à 17h30 et à 21h30 les jeudis et vendredis
+            </p>
+            <p>Pour votre visite, deux types de billets vous sont proposés :</p>
+            <ul>
+                <li>Billet « Journée »</li>
+                <li>Billet « Demi-journée ». Il vous permet d’entrer dans l’établissement à partir de 14h.</li>
+            </ul>
+            <strong>Les Tarifs:</strong>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Billets</th>
+                        <th>Billet Journée</th>
+                        <th>Billet demi-journéz(à partir de 14H*)</th>
+                    </tr>
+                </thead>
+                    <tr>
+                        <td>Tarif normal (à partir de 12 ans)</td>
+                        <td>16 euros</td>
+                        <td>8 euros</td>
+                    </tr>
+                    <tr>
+                        <td>Tarif senior (à partir de 60 ans)</td>
+                        <td>12 euros</td>
+                        <td>6 euros</td>
+                    </tr>
+                    <tr>
+                        <td>Tarif réduit**</td>
+                        <td>10 euros</td>
+                        <td>5 euros</td>
+                    </tr>
+                    <tr>
+                        <td>Tarif enfant (de 4 ans à 12 ans)***</td>
+                        <td>8 euros</td>
+                        <td>4 euros</td>
+                    </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row mt-5 mb-5">
+        <div class="col-4"></div>
+        <div class="col-md-4 ml-auto mr-auto text-center">
+            <a class="btn btn-primary" href="{{ url("booking") }}" role="button">Commandez vos tickets</a>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
+{% endblock %}

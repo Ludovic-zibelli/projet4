@@ -28,7 +28,7 @@ class LouvreController extends Controller
      */
     public function home()
     {
-        return $this->render('louvre/home.html.twig');
+        return $this->render('index/index.html.twig');
     }
     
     /**

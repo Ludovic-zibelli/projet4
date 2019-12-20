@@ -1,0 +1,86 @@
+.no-padding > [class*='col-'] {
+    padding-right:0;
+    padding-left:0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.image_title
+{
+    width: 100%;
+    height: 400px;
+    background-image:url("/image/Image_louvre.jpg") ;
+    background-size: cover;
+}
+
+.image_title h1
+{
+    padding-top:70px ;
+    color: #F7310d;
+}
+
+.image_title h3
+{
+    color: #d3cccb;
+}
+
+.logo
+{
+    background-image: url("/image/logo-louvre.jpg");
+    background-size: cover;
+}
+
+.nav_title
+{
+    /*padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    background-color: black;*/
+}
+
+footer
+{
+    height: 10px;
+
+}
+
+html
+{
+    background-color: #d3cccb;
+}
+
+
+
+/**
+ * The CSS shown here will not be introduced in the Quickstart guide, but shows
+ * how you can use CSS to style your Element's container.
+ */
+.forpayment {
+
+    margin-top: 4rem;
+    padding: 2rem;
+    text-align: left;
+}
+.StripeElement {
+    background-color: white;
+    height: 40px;
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus {
+    box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+    border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+    background-color: #fefde5 !important;
+}
