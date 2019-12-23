@@ -15,28 +15,27 @@
             <hr>
 
             {{ form_start(formBooking) }}
-            <div class="row">
-                <div class="col">{{ form_row(formBooking.email) }}</div>
-                <div class="col">{{ form_row(formBooking.visitdate) }}</div>
-            </div>
 
             <div class="row">
                 <div class="col-9">
                     <div class="card">
                         <div class="card-header">
-                            <h3>{{"buy"|trans}}</h3>
+                            <h3>Information pour la commande</h3>
                         </div>
+                        <div class="card-body">
+                            <p>Pour faire votre commande il y a pas besoin de crée de compte mais nous avont besoin de quelque informations:</p>
+                            <div class="col">{{ form_row(formBooking.visitdate) }}</div>
+                            <p>Une adresse Mail pour vous retourner vos ticket une fois votre commande terminer:</p>
+                            <div class="col">{{ form_row(formBooking.email) }}</div>
+
                         <div class="jumbotron">
+                            <h3>{{"buy"|trans}}</h3>
+                            <p>Ajoutez puis remplissez le nombre de tickets que vous souhaitez.</p>
                             <ul class="tickets" data-prototype="{{ form_widget(formBooking.tickets.vars.prototype)|e('html_attr') }}">
                                 {{ form_row(formBooking.tickets)}}
                             </ul>
                         </div>
-                        <div class="container text-center">
-                            <button type="submit" class="btn btn-secondary">{{"endBooking"|trans}}</button>
                         </div>
-                    {{ form_end(formBooking) }}
-                    </br>
-                    </br>
                     </div>
             </div>
             <div class="col-3">
@@ -48,16 +47,24 @@
             </div>
             <div id="container"></div>
         </div>
+        <div class="row mt-5 text-center">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <button type="submit" class="btn btn-secondary">{{"endBooking"|trans}}</button>
+            </div>
+            <div class="col-4"></div>
+        </div>
+        {{ form_end(formBooking) }}
     </div>
 
     {% endblock %} 
 
 {% block javascripts %}
-
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
     <script type="text/javascript">
         
     var $collectionHolder;
-    var $addTicketButton = $('<button type="button" class="add_ticket_link">Ajouter un billet</button>');
+    var $addTicketButton = $('<button type="button" class="btn btn-primary add_ticket_link">Ajouter un billet</button>');
     
     jQuery(document).ready(function() {
         $collectionHolder = $('ul.tickets');
@@ -82,7 +89,7 @@
     }
 
     function addTicketFormDeleteLink($tagFormLi) {
-        var $removeFormButton = $('<button type="button">Supprimer ce billet</button>');
+        var $removeFormButton = $('<button type="button" class="btn btn-danger">Supprimer ce billet</button>');
         $tagFormLi.append($removeFormButton);
         $removeFormButton.on('click', function(e) {
             $tagFormLi.remove();

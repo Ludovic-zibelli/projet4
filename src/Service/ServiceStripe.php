@@ -14,7 +14,7 @@ class ServiceStripe {
 
 	public function payment($price, $name)
 	{
-		\Stripe\Stripe::setApiKey("sk_test_5rsvvXwQzTQCwO0TMlvLCujq");
+		\Stripe\Stripe::setApiKey("sk_test_24SH0tNg8fLwbFK2DZm346GR00HFGa7v6J");
 
             try {
                 $token = $_POST['stripeToken'];

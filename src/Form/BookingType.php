@@ -12,8 +12,8 @@ class BookingType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', null, array('label' => 'Votre adresse email'))
-            ->add('visitdate', DateType::class, array('label' => 'Votre jour de visite', 'widget' => 'single_text', 'attr' => ['class' => 'js-pickadate-booking']))
+            ->add('email', null, array('label' => 'Votre adresse email:'))
+            ->add('visitdate', DateType::class, array('label' => 'Choisir une date pour votre visite:', 'widget' => 'single_text', 'attr' => ['class' => 'js-pickadate-booking']))
             ->add('tickets', CollectionType::class, [
             'entry_type' => TicketType::class,
             // 'label' => false,
