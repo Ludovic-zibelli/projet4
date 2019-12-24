@@ -1,13 +1,36 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-<img src="public/image/logo.jpg" alt="Logo du Louvre" />
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <img src="{{ asset('/image/images_mail.jpg') }}"  alt="Logo louvre">
+            <img src="{{ asset('/image/logo_3.png') }}"  alt="Logo louvre">
+            <h3>Bienvenue au Musée du louvre!</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <p>Votre réservation <strong>n° {{ number }}</strong>.</p>
+            <p>pour la date du <strong>{{ date }}</strong> a bien été prise en compte.</p>
+            <p>Le montant total de votre commande s'élève à<strong>{{ price }}€</strong>.</p>
 
-<h3>Bienvenue au Musée du louvre!</h3>
+            <p>Vous êtes attendus pour la visite avec les personnes suivantes : </p>
+            <table>
+                {% for ticket in tickets %}
+                    <tr>
+                        <td>Mr où Mme</td>
+                        <td>{{ ticket.name }}</td>
+                        <td>{{ticket.firstname }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <h3>Merci pour votre commande et bonne visite au musée du Louvre</h3>
+            <p>L'équipe du musée</p>
+        </div>
+    </div>
+</div>
 
-Votre réservation n° {{ number }} pour la date du {{ date }} a bien été prise en compte.
-Le montant total de votre commande s'élève à {{ price }}.
 
-Vous êtes attendus pour la visite avec les personnes suivantes : 
-    {% for ticket in tickets %}
-            Mr/Mme {{ ticket.name }} {{ticket.firstname }}         
-    {% endfor %}
+
+
 
