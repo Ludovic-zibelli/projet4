@@ -1,18 +1,10 @@
 {% extends 'base.html.twig' %}
-{% block title %}Payment{% endblock %}
+{% block title %}Paiement{% endblock %}
 {% block body %}
 
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-</head>
-<body>
-<script src="https://js.stripe.com/v3/"></script>
 
 <div class="container background-payment">
-    <div class="row mt-5">
+    <div class="row mt-5 mb-5">
         <div class="col-12">
         <div class="card">
             <div class="card-header text-center">
@@ -47,12 +39,21 @@
                                 <!-- Used to display form errors. -->
                                 <div id="card-errors" role="alert"></div>
                             </div>
-                            <div class="row mt-5 center-block text-center">
+                            <div class="row mt-5 text-center">
                                 <button class="btn btn-primary btn-block">Valider votre paiement</button>
                         </form>
-                            <p><a href="{{path('booking') }}" class="btn blue">Annuler la commande</a></p>
-                        <p><img src="{{ asset('/image/cb-1.jpg') }}" width="400" height="120" class="center-block" alt="Cartes bancaires"></p>
+                                <div class="col-12 center-block">
+                                    <a href="{{path('booking') }}" class="btn blue">Annuler la commande</a>
+                                </div>
+
                             </div>
+                        <div class="row center-block">
+                            <div class="col-12 text-center">
+                                <br>
+                                <br>
+                                <img src="{{ asset('/image/cb-1.jpg') }}" width="250" height="70" class="center-block" alt="Cartes bancaires">
+                            </div>
+                        </div>
 
                         </div>
                     </div>

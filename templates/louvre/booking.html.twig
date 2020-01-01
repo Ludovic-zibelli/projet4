@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="{{ asset('pickadate/themes/default.date.css')}}">
 {% endblock %}
 
+
 {% block body %}  
 </br>
     <div class="container">
@@ -62,6 +63,9 @@
     {% endblock %} 
 
 {% block javascripts %}
+    <script src="{{ asset ('pickadate/picker.js')}}"></script>
+    <script src="{{ asset ('pickadate/picker.date.js')}}"></script>
+    <script src="{{ asset ('pickadate/legacy.js')}}"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
     <script type="text/javascript">
         
