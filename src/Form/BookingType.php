@@ -13,7 +13,10 @@ class BookingType extends AbstractType
     {
         $builder
             ->add('email', null, array('label' => 'Votre adresse email:'))
-            ->add('visitdate', DateType::class, array('label' => 'Choisir une date pour votre visite:', 'widget' => 'single_text', 'attr' => ['class' => 'js-pickadate-booking']))
+            ->add('visitdate', DateType::class, array(
+                'label' => 'Choisir une date pour votre visite:',
+                'widget' => 'single_text',
+                'attr' => ['placeholder' => 'Cliquez ICI','class' => 'js-pickadate-booking']))
             ->add('tickets', CollectionType::class, [
             'entry_type' => TicketType::class,
             // 'label' => false,
@@ -25,7 +28,7 @@ class BookingType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => Booking::class,            
+            'data_class' => Booking::class,
             'cascade_validation' => true,
         ));
     }

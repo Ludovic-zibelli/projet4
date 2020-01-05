@@ -1,18 +1,18 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+<link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
 <div class="container">
     <div class="row">
         <div class="col-12 text-center">
-            <img src="{{ asset('/image/images_mail.jpg') }}"  alt="Logo louvre">
-            <img src="{{ asset('/image/logo_3.png') }}"  alt="Logo louvre">
-            <h3>Bienvenue au Musée du louvre!</h3>
+            <img src="{{ asset('http://projet4.ludoviczibelli.fr/images_mail.jpg') }}" width="190" height="50" alt="Logo louvre">
+            <img src="{{ asset('http://projet4.ludoviczibelli.fr/logo_3.png') }}" alt="Logo louvre">
         </div>
     </div>
     <div class="row">
         <div class="col-12 text-center">
+            <h3>Bienvenue au Musée du louvre!</h3>
             <p>Votre réservation <strong>n° {{ number }}</strong>.</p>
             <p>pour la date du <strong>{{ date }}</strong> a bien été prise en compte.</p>
-            <p>Le montant total de votre commande s'élève à<strong>{{ price }}€</strong>.</p>
+            <p>Le montant total de votre commande s'élève à <strong>{{ price }}€</strong>.</p>
 
             <p>Vous êtes attendus pour la visite avec les personnes suivantes : </p>
             <table>
@@ -30,7 +30,7 @@
     </div>
 </div>
 
-
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous">
 
 
 

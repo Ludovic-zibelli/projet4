@@ -16,8 +16,12 @@ class TicketType extends AbstractType
         ->add('name', null, array('label' => 'Nom'))
         ->add('firstname', null, array('label' => 'Prénom'))
         ->add('country', CountryType::class, array('label' => 'Pays de résidence'))
-        ->add('birthdate', BirthdayType::class, array('label' => 'Votre date de naissance', 'widget' => 'single_text', 'attr' => ['class' => 'js-pickadate-ticket']))
-        ->add('ticketprice', ChoiceType::class, array('label' => 'Billet journée ou demie-journée',
+        ->add('birthdate', BirthdayType::class, array(
+            'label' => 'Votre date de naissance',
+            'widget' => 'single_text',
+            'attr' => ['placeholder' => 'Cliquez ICI','class' => 'js-pickadate-ticket']))
+        ->add('ticketprice', ChoiceType::class, array(
+            'label' => 'Billet journée ou demie-journée',
             'choices'  => array(
                 'Journée' => true,
                 'Demie-Journée (à partir de 14h)' => false,)

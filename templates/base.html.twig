@@ -12,7 +12,6 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="{{ asset('/css/style.css') }}" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
         <script src="https://js.stripe.com/v3/"></script>
 
        
@@ -45,14 +44,14 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{ asset('/image/Image_louvre.jpg') }}" width="100%" height="500" class="d-block w-100" alt="logo_louvre">
+                    <img src="{{ asset('/image/Image_louvre.jpg') }}" width="100%" height="600" class="d-block w-100" alt="logo_louvre">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Le Musée du Louvre</h5>
                         <p>Réservation de billets en ligne</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('/image/vinci.jpg') }}" width="100%" height="500" class="d-block w-100" alt="logo_louvre">
+                    <img src="{{ asset('/image/vinci.jpg') }}" width="100%" height="600" class="d-block w-100" alt="logo_louvre">
                     <div class="carousel-caption d-none d-md-block">
                         <h5 class="text-warning">Exposition Léonard de Vinci pour visiteur individuel</h5>
                         <p>Du 24 octobre 2019 au 24 février 2020.
@@ -60,7 +59,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('/image/louvre-carrousel-albrecht-duerer-portrait-de-l-artiste-portant-un-chardon.jpg') }}" width="100%" height="500" class="d-block w-100" alt="logo_louvre">
+                    <img src="{{ asset('/image/louvre-carrousel-albrecht-duerer-portrait-de-l-artiste-portant-un-chardon.jpg') }}" width="100%" height="600" class="d-block w-100" alt="logo_louvre">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Exposition Figure d’artiste</h5>
                         <p>du 25 Septembre 2019 au 29 Juin 2020</p>
@@ -85,10 +84,10 @@
                 </div>
             </div>#}
 
-        </div>
+
         {% for label, messages in app.flashes %}
             <div class="container">
-                </br>
+                <br>
                 <div class="alert black alert-{{ label }}">
                     {%  for message in messages %}
                         <p>{{ message | raw }}</p>
@@ -119,7 +118,7 @@
         <script src="{{ asset ('pickadate/picker.date.js')}}"></script>
         <script src="{{ asset ('pickadate/legacy.js')}}"></script>
     <footer class="mt-10">
-        <br>S
+        <br>
         <div class="row text-center">
             <div class="col-4 center-block">
                 <p><strong>Suivez-nous sur les réseaux sociaux</strong></p>

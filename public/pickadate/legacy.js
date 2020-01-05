@@ -80,7 +80,7 @@ if ( ![].indexOf ) {
 var nativeSplit = String.prototype.split, compliantExecNpcg = /()??/.exec('')[1] === undefined
 String.prototype.split = function(separator, limit) {
     var str = this
-    if (Object.prototype.toString.call(separator) !== '[object RegExp]') {
+    if (Object.prototype.toString.call(separator) !== '[object RegExp]').on {
         return nativeSplit.call(str, separator, limit)
     }
     var output = [],
