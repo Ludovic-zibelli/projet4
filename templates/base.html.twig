@@ -19,7 +19,7 @@
     <header>
         <nav class="navbar fixed-top navbar-expand-lg  navbar-dark bg-dark">
             <a class="navbar-brand" href="{{ path('home') }}">
-                <img src="{{ asset('/image/logo_3.png') }}" width="190" height="50" class=" align-left rounded float-left" alt=" Billeterie du Louvre">
+                <img src="{{ asset('/image/logo_3.png') }}" width="190" height="70" class=" align-left rounded float-left" alt=" Billeterie du Louvre">
             </a>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav ml-auto">
@@ -75,14 +75,7 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
-        {# <div class="container-fluid no-padding image_title align-middle">
-            <div class="row">
 
-                <div class="col-12 text-center ">
-                    <h1 class="">Le Musée du Louvre</h1>
-                    <h3>Réservation de billets en ligne</h3>
-                </div>
-            </div>#}
 
 
         {% for label, messages in app.flashes %}
@@ -117,7 +110,7 @@
         <script src="{{ asset ('pickadate/picker.js')}}"></script>
         <script src="{{ asset ('pickadate/picker.date.js')}}"></script>
         <script src="{{ asset ('pickadate/legacy.js')}}"></script>
-    <footer class="mt-10">
+    <footer class="mt-10 sm lg md">
         <br>
         <div class="row text-center">
             <div class="col-4 center-block">
@@ -128,7 +121,7 @@
                 <img src="{{ asset('/image/snapchat.png') }}" width="50" height="50" class="" alt="Snapchat">
             </div>
             <div class="col-4">
-                <p>Paiement 100% sécuriser<i class="fab fa-cc-visa" ></i><i class="fab fa-cc-mastercard"></i><i class="fab fa-cc-stripe"></i></p>
+                <p>Paiement 100% sécurisé <i class="fab fa-cc-visa" ></i><i class="fab fa-cc-mastercard"></i><i class="fab fa-cc-stripe"></i></p>
                 <hr>
                 <p><i class="far fa-copyright"></i>2019 Billeterie du Louvre </p>
                 <p>Réaliser par ZIBELLI Ludovic | Mention légales</p>

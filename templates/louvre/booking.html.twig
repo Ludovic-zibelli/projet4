@@ -10,7 +10,7 @@
 
 {% block body %}  
 </br>
-    <div class="container">
+    <div class="container-sm container-md container-lg ">
             </br>
             <h1 class="text-center">{{"booking"|trans}}</h1>
             <hr>
@@ -18,7 +18,7 @@
             {{ form_start(formBooking) }}
 
             <div class="row">
-                <div class="col-9">
+                <div class="col-12">
                     <div class="card">
                         <div class="card-header">
                             <h3>Information pour la commande</h3>
@@ -39,13 +39,7 @@
                         </div>
                     </div>
             </div>
-            <div class="col-3">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Votre commande</h5>
-                    </div>
-                </div>
-            </div>
+
             <div id="container"></div>
         </div>
         <div class="row mt-5 text-center">
