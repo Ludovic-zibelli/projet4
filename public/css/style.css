@@ -1,3 +1,57 @@
+@media (max-width: 768px)
+{
+    .carousel
+    {
+        display: none;
+    }
+
+    .logo_site
+    {
+        display: none;
+    }
+
+    .nav_dek
+    {
+        display: none;
+    }
+
+    h1
+    {
+        font-size: 20px;
+    }
+
+    h3
+    {
+        font-size: 20px;
+    }
+
+
+}
+@media (min-width: 768px)
+{
+    .logo_site_mobile
+    {
+        display: none;
+    }
+
+    .nav_mobile
+    {
+        display: none;
+    }
+}
+
+body
+{
+    margin-top: 70px;
+}
+
+ul
+{
+    padding:0px;
+    margin:0px;
+    list-style-type: none;
+}
+
 .no-padding > [class*='col-'] {
     padding-right:0;
     padding-left:0;
@@ -89,3 +143,4 @@ legend
 {
     visibility: hidden;
 }
+
