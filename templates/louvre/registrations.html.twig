@@ -8,23 +8,23 @@
     </div>
     <div class="row">
         <div class="col-12 text-center">
-            <h3>Bienvenue au Musée du louvre!</h3>
-            <p>Votre réservation <strong>n° {{ number }}</strong>.</p>
-            <p>pour la date du <strong>{{ date }}</strong> a bien été prise en compte.</p>
-            <p>Le montant total de votre commande s'élève à <strong>{{ price }}€</strong>.</p>
+            <h3>{{ 'titre_regi_1'|trans }}</h3>
+            <p>{{ 'texte_regi_1'|trans }} <strong>n° {{ number }}</strong>.</p>
+            <p>{{ 'texte_regi_2'|trans }} <strong>{{ date }}</strong> {{ 'texte_regi_3'|trans }}.</p>
+            <p>{{ 'texte_regi_4'|trans }} <strong>{{ price }}€</strong>.</p>
 
-            <p>Vous êtes attendus pour la visite avec les personnes suivantes : </p>
+            <p>{{ 'texte_regi_5'|trans }} : </p>
             <table>
                 {% for ticket in tickets %}
                     <tr>
-                        <td>Mr où Mme</td>
+                        <td>{{ 'texte_regi_6'|trans }}</td>
                         <td>{{ ticket.name }}</td>
                         <td>{{ticket.firstname }}</td>
                     </tr>
                 {% endfor %}
             </table>
-            <h3>Merci pour votre commande et bonne visite au musée du Louvre</h3>
-            <p>L'équipe du musée</p>
+            <h3>{{ 'texte_regi_7'|trans }}</h3>
+            <p>{{ 'texte_regi_8'|trans }}</p>
         </div>
     </div>
 </div>

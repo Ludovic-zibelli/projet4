@@ -12,13 +12,13 @@
 		<div class="container">
 			<h4>{{ "openingTime"|trans}}</h4>
 			</br>
-			<p> {{ "monday"|trans}} : 9h - 18h <br/>
-				{{ "tuesday"|trans}} : Fermé <br/>
-				{{ "wednesday"|trans}} : 9h - 21h45 <br/>
-				{{ "thursday"|trans}} : 9h - 18h <br/>
-				{{ "friday"|trans}} : 9h -21h45 <br/>
-				{{ "saturday"|trans}} : 9h - 18h <br/>
-				{{ "sunday"|trans}} : 9h - 18h </p>
+			<p> {{ "monday.monday_1"|trans}} : {{ 'monday.monday_2'|trans }} <br/>
+				{{ "tuesday.tuesday_1"|trans}} : {{ 'tuesday.tuesday_2'|trans }} <br/>
+				{{ "wednesday.wednesday_1"|trans}} : {{ "wednesday.wednesday_2"|trans}} <br/>
+				{{ "thursday.thursday_1"|trans}} : {{ "thursday.thursday_2"|trans}} <br/>
+				{{ "friday.friday_1"|trans}} : {{ "friday.friday_2"|trans}} <br/>
+				{{ "saturday.saturday_1"|trans}} : {{ "saturday.saturday_2"|trans}} <br/>
+				{{ "sunday.sunday_1"|trans}} : {{ "sunday.sunday_2"|trans}} </p>
 
 			<p>{{ "closing"|trans}}</p>
 
@@ -39,9 +39,9 @@
 
 			<h4>{{ "acces"|trans}}</h4>
 			</br>
-			<p> En métro : lignes 1 et 7, station "Palais-Royal / Musée du Louvre" </p>
+			<p> {{ 'metro.metro_1'|trans }} : {{ 'metro.metro_2'|trans }} </p>
 
-			<p> En bus : bus n° 21, 24, 27, 39, 48, 68, 69, 72, 81, 95 </p>
+			<p> {{ 'bus.bus_1'|trans }} : {{ 'bus.bus_2'|trans }} n° 21, 24, 27, 39, 48, 68, 69, 72, 81, 95 </p>
 
 			<p>{{ "velib"|trans}}<br/>
 			n°1015 : 2 place A. Malraux	<br/>
@@ -51,7 +51,7 @@
 
 			<p> {{ "car"|trans}} : {{ "carPark"|trans}}. </p>
 
-			<p> En Batobus : Escale Louvre, quai François Mitterrand </p>
+			<p> {{ 'bateau_bus.bateau_bus_1'|trans }}: {{ 'bateau_bus.bateau_bus_2'|trans }} </p>
 		</div>
 	<br>
 </div>

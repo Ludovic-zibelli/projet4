@@ -1,47 +1,47 @@
 {% extends 'base.html.twig' %}
-{% block title %}Bienvenue sur la billeterie du musée du Louvre{% endblock %}
+{% block title %}{{ 'titre_page_index'|trans }}{% endblock %}
 {% block body %}
 <div class="container">
-    <div class="row mt-10">
+    <div class="row titre_index">
         <div class="col-12">
-            <h1 class="text-center">Bienvenue sur la billetterie du musée du Louvre</h1>
+            <h1 class="text-center">{{ 'titre_page_index'|trans }}</h1>
         </div>
     </div>
     <div class="row mt-5">
         <div class="col-12">
-            <p>Le musée du Louvre vous accueille tous les jours, sauf les mardis et quelques jours fériés (les 1er mai, 1er novembre et 25 décembre), de 9h à 18h, jusqu'à 21h45 les jeudis et vendredis. La fermeture des salles débute à 17h30 et à 21h30 les jeudis et vendredis
+            <p>{{ 'texte_index_1'|trans }}
             </p>
-            <p>Pour votre visite, deux types de billets vous sont proposés :</p>
+            <p>{{ 'texte_index_2'|trans }}:</p>
             <ul>
-                <li>Billet « Journée »</li>
-                <li>Billet « Demi-journée ». Il vous permet d’entrer dans l’établissement à partir de 14h.</li>
+                <li>{{ 'li_index_1'|trans }}</li>
+                <li>{{ 'li_index_2'|trans }}</li>
             </ul>
-            <strong>Les Tarifs:</strong>
+            <strong>{{ 'texte_index_3'|trans }}:</strong>
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Billets</th>
-                        <th>Billet Journée</th>
-                        <th>Billet demi-journéz(à partir de 14H*)</th>
+                        <th>{{ 'tableau_index_1'|trans }}</th>
+                        <th>{{ 'tableau_index_2'|trans }}</th>
+                        <th>{{ 'tableau_index_3'|trans }}</th>
                     </tr>
                 </thead>
                     <tr>
-                        <td>Tarif normal (à partir de 12 ans)</td>
+                        <td>{{ 'tableau_index_4'|trans }}</td>
                         <td>16 euros</td>
                         <td>8 euros</td>
                     </tr>
                     <tr>
-                        <td>Tarif senior (à partir de 60 ans)</td>
+                        <td>{{ 'tableau_index_5'|trans }}</td>
                         <td>12 euros</td>
                         <td>6 euros</td>
                     </tr>
                     <tr>
-                        <td>Tarif réduit**</td>
+                        <td>{{ 'tableau_index_6'|trans }}</td>
                         <td>10 euros</td>
                         <td>5 euros</td>
                     </tr>
                     <tr>
-                        <td>Tarif enfant (de 4 ans à 12 ans)***</td>
+                        <td>{{ 'tableau_index_7'|trans }}</td>
                         <td>8 euros</td>
                         <td>4 euros</td>
                     </tr>
@@ -51,7 +51,7 @@
     <div class="row mt-5 mb-5">
         <div class="col-4"></div>
         <div class="col-md-4 ml-auto mr-auto text-center">
-            <a class="btn btn-primary" href="{{ url("booking") }}" role="button">Commandez vos tickets</a>
+            <a class="btn btn-primary" href="{{ url("booking") }}" role="button">{{ 'bouton_index'|trans }}</a>
         </div>
         <div class="col-4"></div>
     </div>

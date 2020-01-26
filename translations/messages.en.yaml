@@ -10,13 +10,27 @@ descriptionMuseum2 : The museum is responsible for the management of 2,091 emplo
 wordTicketing : Ticketing
 wordInformation : useful Information
 openingTime : Opening Time
-monday : Monday
-tuesday : Tuesday
-wednesday : Wednesday
-thursday: Thursday
-friday : Friday
-saturday : Saturday
-sunday : Sunday
+monday :
+  monday_1 : Monday
+  monday_2 : 9 a.m. - 6 p.m.
+tuesday :
+  tuesday_1 : Tuesday
+  tuesday_2 : Closed
+wednesday:
+  wednesday_1: Wednesday
+  wednesday_2: 9 a.m. - 9:45 p.m.
+thursday :
+  thursday_1 : Thursday
+  thursday_2 : 9 a.m. - 6 p.m.
+friday :
+  friday_1: Friday
+  friday_2: 9 a.m. - 9:45 p.m.
+saturday :
+  saturday_1: Saturday
+  saturday_2: 9 a.m. - 6 p.m.
+sunday :
+  sunday_1: Sunday
+  sunday_2: 9 a.m. - 6 p.m.
 closing : Room evacuation begins at 5:30 pm or 9:30 pm on night days
 daysOff : The museum is closed on May 1st, November 1st and December 25th
 prices : Prices
@@ -34,7 +48,95 @@ acces : Access to the Louvre Museum
 velib : Velib stations close to the museum
 car : By car 
 carPark : an underground car park is accessible by General Lemonier Avenue, every day from 7 am to 11 pm
+metro :
+  metro_1 : By metro
+  metro_2 : lines 1 and 7, station "Palais-Royal / Musée du Louvre"
+bus:
+  bus_1 : By bus
+  bus_2 : bus
+bateau_bus :
+  bateau_bus_1 : By boatbus
+  bateau_bus_2 : Louvre stopover, quai François Mitterrand
 booking : Booking
 buy : Buy your tickets
 endBooking : Finish your order
 Nav1 : Home
+#Page Booking
+booking_titel : Ordering information
+booking_text : To make your order there is no need to create an account but we need some information
+booking_text_1 : An email address to return your tickets once your order is complete
+booking_text_2 : Add and fill in the number of tickets you want
+bouton_ajouter_ticket : Add a ticket
+bouton_supprimer_ticket : Delete this post
+#Page base
+#-nav
+nav_1 : Ticketing
+nav_2 : Useful information
+nav_3 : FR/EN
+#-caroussele
+titre_1 : Booking tickets online
+titre_2 : Leonardo da Vinci exhibition for individual visitors
+sous_titre_1 : From October 24, 2019 until February 24, 2020. Purchase and reservation required, only online
+titre_3 : Artist Figure Exhibition
+sous_titre_2 : from September 25, 2019 to June 29, 2020
+#footer
+contacter_nous : Contact us on Tel
+horaire : Every day, except Tuesday, from 9 a.m. to 6.30 p.m.
+horaire_2 : Wednesdays and Fridays
+reseau_sociaux : Follow us on social media
+payement_securisé : 100% secure payment
+realiser_par : Realized by
+mention_legale : Legal mention
+billeteri_louvre : Louvre ticket office
+#payment
+titre_payement : PAYMENT OF YOUR ORDER
+texte_payement_1 : The total of your order is
+texte_payement_2 : You can proceed to payment below
+texte_payement_3 : Fill in the details of your credit / debit card
+bouton_valider_payement : Confirm your payment
+bouton_annul_payement : Cancel the order
+titre_page_payement : Payment of your order
+#Page charge
+titre_charge : Payment made
+titre_charge_1 : PAYMENT OF YOUR ORDER
+titre_charge_2 : Your order has been taken into account
+texte_charge_1 : You will receive a confirmation email that you will print and use to access the museum
+titre_charge_3 : See you soon for your visit!
+bouton_retour_charge : Back to home
+#Page registration
+titre_regi_1 : Welcome to the Louvre Museum!
+texte_regi_1 : Your reservation
+texte_regi_2 : for the date of
+texte_regi_3 : has been taken into account
+texte_regi_4 : The total amount of your order is
+texte_regi_5 : You are expected for the visit with the following people
+texte_regi_6 : Mr where mrs
+texte_regi_7 : Thank you for your order and enjoy your visit to the Louvre museum
+texte_regi_8 : The museum team
+#Page index
+titre_page_index : Welcome to the Louvre museum ticket office
+texte_index_1 : The Louvre museum welcomes you every day, except Tuesdays and some public holidays (May 1, November 1 and December 25), from 9 a.m. to 6 p.m., until 9:45 p.m. on Thursdays and Fridays. The rooms close at 5.30 p.m. and 9.30 p.m. on Thursdays and Fridays
+texte_index_2 : Two types of tickets are available for your visit
+li_index_1 : Day ticket
+li_index_2 : Half-day ticket. It allows you to enter the establishment from 2 p.m.
+texte_index_3 : The rates
+tableau_index_1 : Tickets
+tableau_index_2 : Day ticket
+tableau_index_3 : Half-day ticket (from 2 p.m. *)
+tableau_index_4 : Normal price (from 12 years old)
+tableau_index_5 : Senior rate (from 60 years old)
+tableau_index_6 : Reduced price**
+tableau_index_7 : Child rate (from 4 to 12 years old) ***
+bouton_index : Order your tickets
+#From
+label_mail : Your email address
+label_date_visite : Choose a date for your visit*
+placeholder_1 : Click here
+label_nom : Last name
+label_prenom : First name
+label_pays : Country of residence
+label_datenaissance : Your date of birth
+label_type_billet : Day or half day ticket
+label_journée : Day
+label_demi_journée : Half-day (from 2 p.m.)
+label_reduit : Reduced rate (for Students, museum employees, a department of the Ministry of Culture, soldiers on presentation of your supporting card)

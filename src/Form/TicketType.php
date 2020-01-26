@@ -13,20 +13,20 @@ class TicketType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('name', null, array('label' => 'Nom'))
-        ->add('firstname', null, array('label' => 'Prénom'))
-        ->add('country', CountryType::class, array('label' => 'Pays de résidence'))
+        ->add('name', null, array('label' => 'label_nom'))
+        ->add('firstname', null, array('label' => 'label_prenom'))
+        ->add('country', CountryType::class, array('label' => 'label_pays'))
         ->add('birthdate', BirthdayType::class, array(
-            'label' => 'Votre date de naissance',
+            'label' => 'label_datenaissance',
             'widget' => 'single_text',
-            'attr' => ['placeholder' => 'Cliquez ICI','class' => 'js-pickadate-ticket']))
+            'attr' => ['placeholder' => 'placeholder_1','class' => 'js-pickadate-ticket']))
         ->add('ticketprice', ChoiceType::class, array(
-            'label' => 'Billet journée ou demie-journée',
+            'label' => 'label_type_billet',
             'choices'  => array(
-                'Journée' => true,
-                'Demie-Journée (à partir de 14h)' => false,)
+                'label_journée' => true,
+                'label_demi_journée' => false,)
             ))
-        ->add('reducedprice', null, array('label' => 'Tarif réduit (pour Les étudiants, employés du musée, d’un service du Ministère de la Culture, militaires sur présentation de votre carte justificative)'));
+        ->add('reducedprice', null, array('label' => 'label_reduit'));
     }
     public function configureOptions(OptionsResolver $resolver)
 {

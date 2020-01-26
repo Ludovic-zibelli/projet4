@@ -9,13 +9,27 @@ descriptionMuseum2 : Le musée est responsable de la gestion de 2 091 employés 
 wordTicketing : Billetterie
 wordInformation : Informations pratiques
 openingTime : Horaires d'ouverture
-monday : Lundi
-tuesday : Mardi
-wednesday : Mercredi
-thursday : Jeudi
-friday : Vendredi
-saturday : Samedi
-sunday : Dimanche
+monday :
+  monday_1 : Lundi
+  monday_2 : 9h - 18h
+tuesday :
+  tuesday_1 : Mardi
+  tuesday_2 : Fermé
+wednesday :
+  wednesday_1 : Mercredi
+  wednesday_2 : 9h - 21h45
+thursday :
+  thursday_1 : Jeudi
+  thursday_2 : 9h - 18h
+friday :
+  friday_1 : Vendredi
+  friday_2 : 9h -21h45
+saturday :
+  saturday_1 : Samedi
+  saturday_2 : 9h - 18h
+sunday :
+  sunday_1 : Dimanche
+  sunday_2 : 9h - 18h
 closing : L'évacuation des salles débute à 17 h 30 ou 21 h 30 les jours de nocturne
 daysOff : Le musée est fermé les  1er mai, 1er novembre et 25 décembre
 prices : Tarifs
@@ -33,7 +47,95 @@ acces : Accéder au Musée du Louvre
 velib : Stations Velib à proximité du musée
 car : En voiture 
 carPark : un parc de stationnement souterrain est accessible par l'avenue du général Lemonier, tous les jours de 7 h 00 à 23 h 00
+metro :
+  metro_1 : En métro
+  metro_2 : lignes 1 et 7, station "Palais-Royal / Musée du Louvre"
+bus:
+  bus_1 : En bus
+  bus_2 : bus
+bateau_bus :
+  bateau_bus_1 : En Bateaubus
+  bateau_bus_2 : Escale Louvre, quai François Mitterrand
 booking : Réservation
 buy : Achetez vos billets
 endBooking : Terminez ma commande
 Nav1 : Accueil
+booking_titel : Information pour la commande
+booking_text : Pour faire votre commande il y a pas besoin de crée de compte mais nous avont besoin de quelque informations
+booking_text_1 : Une adresse Mail pour vous retourner vos ticket une fois votre commande terminer
+booking_text_2 : Ajoutez puis remplissez le nombre de tickets que vous souhaitez
+bouton_ajouter_ticket : Ajouter un billet
+bouton_supprimer_ticket : Supprimer ce billet
+#Page base
+#header
+#-nav
+nav_1 : Billeterie
+nav_2 : Informations pratiques
+nav_3 : FR/EN
+#-caroussel
+titre_1 : Réservation de billets en ligne
+titre_2 : Exposition Léonard de Vinci pour visiteur individuel
+sous_titre_1 : Du 24 octobre 2019 au 24 février 2020. Achat et réservation obligatoire, uniquement en ligne
+titre_3 : Exposition Figure d’artiste
+sous_titre_2 : du 25 Septembre 2019 au 29 Juin 2020
+#footer
+contacter_nous : Contacter-nous au Tél
+horaire : Tous les jours, sauf le mardi, de 9h à 18h30
+horaire_2 : les mercredis et vendredis
+reseau_sociaux : Suivez-nous sur les réseaux sociaux
+payement_securisé : Paiement 100% sécurisé
+realiser_par : Réaliser par
+mention_legale : Mention légales
+billeteri_louvre : Billeterie du Louvre
+#Page payment
+titre_payement : PAIEMENT DE VOTRE COMMANDE
+texte_payement_1 : Le total de de votre commande s'élève à
+texte_payement_2 : Vous pouvez procéder au paiement ci-dessous
+texte_payement_3 : Renseignez les éléments de votre carte de crédit/débit
+bouton_valider_payement : Valider votre paiement
+bouton_annul_payement : Annuler la commande
+titre_page_payement : Paiement de votre commande
+#Page charge
+titre_charge : Paiement effectuer
+titre_charge_1 : PAIEMENT DE VOTRE COMMANDE
+titre_charge_2 : Votre commande a bien été prise en compte
+texte_charge_1 : Vous allez recevoir un email de confirmation que vous imprimerez et utiliserez pour accéder au musée
+titre_charge_3 : A bientôt pour votre visite !
+bouton_retour_charge : Retour a l'acceuil
+#Page registration
+titre_regi_1 : Bienvenue au Musée du louvre!
+texte_regi_1 : Votre réservation
+texte_regi_2 : pour la date du
+texte_regi_3 : a bien été prise en compte
+texte_regi_4 : Le montant total de votre commande s'élève à
+texte_regi_5 : Vous êtes attendus pour la visite avec les personnes suivantes
+texte_regi_6 : Mr où Mme
+texte_regi_7 : Merci pour votre commande et bonne visite au musée du Louvre
+texte_regi_8 : L'équipe du musée
+#Page index
+titre_page_index : Bienvenue sur la billeterie du musée du Louvre
+texte_index_1 : Le musée du Louvre vous accueille tous les jours, sauf les mardis et quelques jours fériés (les 1er mai, 1er novembre et 25 décembre), de 9h à 18h, jusqu'à 21h45 les jeudis et vendredis. La fermeture des salles débute à 17h30 et à 21h30 les jeudis et vendredis
+texte_index_2 : Pour votre visite, deux types de billets vous sont proposés
+li_index_1 : Billet « Journée »
+li_index_2 : Billet « Demi-journée ». Il vous permet d’entrer dans l’établissement à partir de 14h.
+texte_index_3 : Les Tarifs
+tableau_index_1 : Billets
+tableau_index_2 : Billet Journée
+tableau_index_3 : Billet demi-journéz(à partir de 14H*)
+tableau_index_4 : Tarif normal (à partir de 12 ans)
+tableau_index_5 : Tarif senior (à partir de 60 ans)
+tableau_index_6 : Tarif réduit**
+tableau_index_7 : Tarif enfant (de 4 ans à 12 ans)***
+bouton_index : Commandez vos tickets
+#From
+label_mail : Votre adresse email
+label_date_visite : Choisir une date pour votre visite
+placeholder_1 : Cliquez ICI
+label_nom : Nom
+label_prenom : Prénom
+label_pays : Pays de
+label_datenaissance : Votre date de naissance
+label_type_billet : Billet journée ou demie-journée
+label_journée : Journée
+label_demi_journée : Demie-Journée (à partir de 14h)
+label_reduit : Tarif réduit (pour Les étudiants, employés du musée, d’un service du Ministère de la Culture, militaires sur présentation de votre carte justificative)

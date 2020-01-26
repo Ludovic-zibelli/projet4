@@ -7,22 +7,22 @@
 <div class="container background-payment mt-5">
         <div class="row">
                 <div class="col-12 text-center">
-                        <h1>PAIEMENT DE VOTRE COMMANDE</h1>
+                        <h1>{{ 'titre_charge_1'|trans }}</h1>
                         <hr>
                         <br>
                         <br>
-                        <h3><strong>Votre commande a bien été prise en compte.</strong></h3>
-                        <p><strong>Vous allez recevoir un email de confirmation que vous imprimerez et utiliserez pour accéder au musée </strong></p>
+                        <h3><strong>{{ 'titre_charge_2'|trans }}.</strong></h3>
+                        <p><strong>{{ 'texte_charge_1'|trans }} </strong></p>
                         <br>
                         <br>
-                        <h3><strong>A bientôt pour votre visite !</strong></h3>
+                        <h3><strong>{{ 'titre_charge_3'|trans }}</strong></h3>
                 </br>
                 </div>
         </div>
-        <div class="row">
+        <div class="row pb-10">
                 <div class="col-4"></div>
                 <div class="col-4">
-                        <a class="btn btn-block btn-secondary" href="{{ path('home') }}">Retour a l'acceuil</a>
+                        <a class="btn btn-block btn-secondary" href="{{ path('home') }}">{{ 'bouton_retour_charge'|trans }}</a>
                 </div>
                 <div class="col-4"></div>
         </div>

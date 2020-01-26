@@ -24,15 +24,15 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 class LouvreController extends Controller
 {
     /**
-     * @Route("/", name="home")
+     * @Route("/{_locale}", name="home",defaults={"_locale":"%locale%"}, methods={"GET","POST"})
      */
     public function home()
     {
         return $this->render('index/index.html.twig');
     }
-    
+
     /**
-     * @Route("/booking", name="booking")
+     * @Route("/{_locale}/booking", name="booking" , defaults={"_locale":"%locale%"}, methods={"GET","POST"})
      */
     public function booking(Request $request, ServiceBooking $serviceBooking, EntityManagerInterface $entitymanager)
     {
@@ -64,10 +64,10 @@ class LouvreController extends Controller
         }
 
         return $this->render('louvre/booking.html.twig', array('formBooking' => $form->createView()));    
-    } 
+    }
 
     /**
-     * @Route("/payment", name="payment")
+     * @Route("/{_locale}/payment", name="payment", defaults={"_locale":"%locale%"}, methods={"GET","POST"})
      */
     public function payment(BookingRepository $repo)
     {
@@ -79,7 +79,7 @@ class LouvreController extends Controller
     }
 
     /**
-     * @Route("/charge", name="charge")
+     * @Route("/{_locale}/charge", name="charge", defaults={"_locale":"%locale%"}, methods={"GET","POST"})
      */
     public function charge(BookingRepository $repo, \Swift_Mailer $mailer, TicketRepository $repoticket, 
     ServiceStripe $serviceStripe, ServiceMailer $serviceMailer)
@@ -95,19 +95,6 @@ class LouvreController extends Controller
             $result = $serviceStripe->payment($price, $number);
 
             if ($result == 'success') {
-                // $message = (new \Swift_Message('Votre paiement pour le Musée du Louvre'))
-                // ->setFrom('nesousx.website@gmail.com')
-                // ->setTo($email)
-                // ->setBody(
-                //     $this->render('louvre/registrations.html.twig', [
-                //     'date' => $date, 
-                //     'price' => $price, 
-                //     'number' => $number, 
-                //     'tickets' => $repoticket->findBy(['id' => $id])
-                //     ]
-                // ),
-                // 'text/html');
-                // $mailer->send($message);
                 $email = $serviceMailer->userConfirmation($email, $number, $date, $price, $repoticket, $id);
                 return $this->render('louvre/charge.html.twig');             
             }
@@ -122,7 +109,7 @@ class LouvreController extends Controller
     }
 
     /**
-     * @Route("/infos", name="infos")
+     * @Route("/{_locale}/infos", name="infos", defaults={"_locale":"%locale%"}, methods={"GET","POST"})
      */
     public function infos()
     {
