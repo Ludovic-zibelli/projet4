@@ -20,7 +20,7 @@ class ServiceMailer {
    {
 
        $message = (new \Swift_Message())
-           ->setSubject('Votre paiement pour le musée du Louvre')
+           ->setSubject('Le Musée du Louvre')
            ->setFrom('no_repli@louvre.fr')
            ->setTo($email)
            ->setBody(

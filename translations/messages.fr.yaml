@@ -139,3 +139,5 @@ label_type_billet : Billet journée ou demie-journée
 label_journée : Journée
 label_demi_journée : Demie-Journée (à partir de 14h)
 label_reduit : Tarif réduit (pour Les étudiants, employés du musée, d’un service du Ministère de la Culture, militaires sur présentation de votre carte justificative)
+#mail
+mail : Votre paiement pour le musée du Louvre

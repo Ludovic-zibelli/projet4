@@ -61,6 +61,10 @@ ul
     margin:0px;
     list-style-type: none;
 }
+.charge_1
+{
+    padding-bottom: 15px;
+}
 
 .no-padding > [class*='col-'] {
     padding-right:0;

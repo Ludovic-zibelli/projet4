@@ -140,3 +140,5 @@ label_type_billet : Day or half day ticket
 label_journée : Day
 label_demi_journée : Half-day (from 2 p.m.)
 label_reduit : Reduced rate (for Students, museum employees, a department of the Ministry of Culture, soldiers on presentation of your supporting card)
+#mail
+mail : Your payment for the Louvre museum
