@@ -60,6 +60,7 @@ booking : Réservation
 buy : Achetez vos billets
 endBooking : Terminez ma commande
 Nav1 : Accueil
+titre_info : Informations pratiques
 booking_titel : Information pour la commande
 booking_text : Pour faire votre commande il y a pas besoin de crée de compte mais nous avont besoin de quelque informations
 booking_text_1 : Une adresse Mail pour vous retourner vos ticket une fois votre commande terminer

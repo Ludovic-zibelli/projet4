@@ -61,6 +61,7 @@ booking : Booking
 buy : Buy your tickets
 endBooking : Finish your order
 Nav1 : Home
+titre_info : Useful information
 #Page Booking
 booking_titel : Ordering information
 booking_text : To make your order there is no need to create an account but we need some information
