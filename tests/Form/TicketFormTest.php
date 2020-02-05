@@ -3,7 +3,7 @@
 namespace App\Tests\Form;
 
 use App\Entity\Ticket;
-use App\Form\TicketForm; 
+use App\Form\TicketType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
 class TicketFormTest extends TypeTestCase 
@@ -11,12 +11,15 @@ class TicketFormTest extends TypeTestCase
    public function testSubmitValidData()
    {
       $formData = [
-         'test' => 'test',
-         'test2' => 'test2',
+         'name' => null,
+         'firstname' => null,
+          'country' => 'france',
+          'birthdate' => '03-04-1983',
+          'reducedprice' => false,
       ];
 
       $objectToCompare = new Ticket();
-      $form = $this->factory->create(TicketForm::class, $objectToCompare);
+      $form = $this->factory->create(TicketType::class, $objectToCompare);
 
       $object = new Ticket();
       $form->submit($formData);

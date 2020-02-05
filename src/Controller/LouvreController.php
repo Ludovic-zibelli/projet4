@@ -93,9 +93,9 @@ class LouvreController extends Controller
                 $id = $lastbooking[0]->getId();
            
             $result = $serviceStripe->payment($price, $number);
-
+        $repoTicket_2 = $repoticket->findBy(['booking' => $id]);
             if ($result == 'success') {
-                $email = $serviceMailer->userConfirmation($email, $number, $date, $price, $repoticket, $id);
+                $email = $serviceMailer->userConfirmation($email, $number, $date, $price, $repoTicket_2, $id);
                 return $this->render('louvre/charge.html.twig');             
             }
             else {

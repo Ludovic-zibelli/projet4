@@ -10,22 +10,22 @@ class TicketTest extends TestCase
    public function testOfTicket()
    {
       $testt = new Ticket;
-
+      $bookin = 22;
       $testt->setName('Dupont');
       $testt->setFirstname('Julio');
-      $testt->setBirthdate('25/05/1982');
+      $testt->setBirthdate(new \DateTime("1983-05-01"));
       $testt->setCountry('BE');
       $testt->setReducedprice(false);
       $testt->setTicketprice(false);
-      $testt->setBooking('22');
+      $testt->setBooking(null);
 
       $this->assertEquals('Dupont', $testt->getName());
       $this->assertEquals('Julio', $testt->getFirstname());
-      $this->assertEquals('25/05/1982', $testt->getBirthdate());
+      $this->assertEquals(new \DateTime("1983-05-01"), $testt->getBirthdate());
       $this->assertEquals('BE', $testt->getCountry());
-      $this->assertFalse('', $testt->getReducedprice());
-      $this->assertFalse('', $testt->getTicketprice());
-      $this->assertEquals('22', $testt->getBooking());
+      $this->assertFalse(false, $testt->getReducedprice());
+      $this->assertFalse(false, $testt->getTicketprice());
+      $this->assertEquals(false, $testt->getBooking());
    }
        
 }

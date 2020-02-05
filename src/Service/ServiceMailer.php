@@ -29,7 +29,7 @@ class ServiceMailer {
                        'date' => $date,
                        'price' => $price,
                        'number' => $number,
-                       'tickets' => $repoticket->findBy(['id' => $id])
+                       'tickets' => $repoticket
                    ]
                ),
                'text/html'

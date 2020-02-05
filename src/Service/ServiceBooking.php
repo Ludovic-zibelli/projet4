@@ -14,18 +14,19 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 
 class ServiceBooking {
-			
-	private $entityManager;
 
-	public function __construct(EntityManagerInterface $entityManager){
-		$this->entityManager = $entityManager;
-	}
 
-	public function create(Booking $booking){
-		$this->update($booking);
-		$this->entityManager->persist($booking);		
-		$this->entityManager->flush();		
-	}
+    private $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager){
+        $this->entityManager = $entityManager;
+    }
+
+    public function create(Booking $booking){
+        $this->update($booking);
+        $this->entityManager->persist($booking);
+        $this->entityManager->flush();
+    }
 
 	public function CalculAge(Ticket $ticket)
 	// on recupère les dates et on calcule l'âge du visiteur
@@ -68,12 +69,10 @@ class ServiceBooking {
 				}
 					
 				else {
-					if ($ticketprice == false) {
+					if ($ticketprice == false && $reducedprice == true) {
 						$priceTicket = 8;
 					}
-					elseif ( $reducedprice == true) {
-						$priceTicket = 10;
-					}	
+
 					else {
 						$priceTicket = 16;
 					}
